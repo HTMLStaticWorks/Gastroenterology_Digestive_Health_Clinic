@@ -75,6 +75,43 @@
     @media (max-width: 768px) {
       .contact-grid { grid-template-columns: 1fr; }
     }
+      .faq-item {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .faq-summary {
+      padding: 1.5rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--color-terracotta);
+      transition: transform 0.3s ease;
+    }
+    details[open] .faq-summary::after {
+      content: '-';
+    }
+    .faq-content {
+      padding: 0 1.5rem 1.5rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      border-top: 1px solid var(--border-light);
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -128,6 +165,25 @@
           <h4>Opening Hours</h4>
           <p>Monday &ndash; Friday: 8:00 AM &ndash; 6:00 PM<br>Saturday &ndash; Sunday: Closed</p>
         </div>
+        
+        <div class="contact-info-block" style="margin-top: 3rem;">
+          <h4>Follow Us</h4>
+          <div style="display: flex; gap: 1rem; margin-top: 1rem; color: var(--color-plum);">
+            <a href="#" aria-label="Instagram" class="social-icon" style="color: inherit;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="social-icon" style="color: inherit;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="#" aria-label="Twitter" class="social-icon" style="color: inherit;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <div style="margin-top: 3rem; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); height: 250px;">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.25997233261!2d-73.9877395843469!3d40.75627764283832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259abbb343361%3A0x8ed7f4d384078170!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1689230198083!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
       </div>
       
       <div class="contact-form">
@@ -160,6 +216,28 @@
           </div>
           <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
         </form>
+      </div>
+    </section>
+
+    <section class="section container" style="padding-top: 0; padding-bottom: 6rem;">
+      <h2 style="font-size: 2.5rem; color: var(--color-plum); margin-bottom: 3rem; text-align: center;">Frequently Asked Questions</h2>
+      <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
+        <details class="faq-item">
+          <summary class="faq-summary">Do I need a referral to book an appointment?</summary>
+          <div class="faq-content">Most PPO insurance plans do not require a referral, but HMO plans typically do. We recommend checking with your insurance provider prior to your visit to ensure coverage.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-summary">What should I bring to my first consultation?</summary>
+          <div class="faq-content">Please bring your photo ID, insurance card, a list of current medications, and any relevant medical records or previous test results related to your digestive health.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-summary">Do you offer telehealth appointments?</summary>
+          <div class="faq-content">Yes, we offer telehealth consultations for follow-ups, test result reviews, and initial consultations where appropriate. Please select "Telehealth" when filling out your request form.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-summary">What forms of payment do you accept?</summary>
+          <div class="faq-content">We accept all major credit cards, HSA/FSA cards, and personal checks. For specific billing inquiries, our financial concierge is happy to assist you prior to your procedure.</div>
+        </details>
       </div>
     </section>
   </main>

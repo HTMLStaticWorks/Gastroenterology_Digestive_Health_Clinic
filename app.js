@@ -55,4 +55,45 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Mobile Menu Logic
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const navActions = document.querySelector('.nav-actions');
+  
+  if (mobileMenuToggle && navLinks) {
+    const actionBtn = document.querySelector('.nav-actions .btn') || document.querySelector('.nav-links .btn');
+    
+    function handleMenuResize() {
+      if (window.innerWidth <= 900) {
+        if (themeToggle && themeToggle.parentElement !== navLinks) {
+          navLinks.appendChild(themeToggle);
+        }
+        if (actionBtn && actionBtn.parentElement !== navLinks) {
+          navLinks.appendChild(actionBtn);
+        }
+      } else {
+        if (themeToggle && navActions && themeToggle.parentElement !== navActions) {
+          navActions.insertBefore(themeToggle, mobileMenuToggle);
+        }
+        if (actionBtn && navActions && actionBtn.parentElement !== navActions) {
+          navActions.appendChild(actionBtn);
+        }
+      }
+    }
+    
+    window.addEventListener('resize', handleMenuResize);
+    handleMenuResize(); // initialize on load
+
+    mobileMenuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      
+      // Toggle icon between hamburger and close (X)
+      if (navLinks.classList.contains('active')) {
+        mobileMenuToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hamburger-icon-close"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+      } else {
+        mobileMenuToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hamburger-icon-open"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+      }
+    });
+  }
 });

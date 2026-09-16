@@ -117,8 +117,21 @@ img {
   padding: 0 5%;
 }
 
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
 .section {
-  padding: 6rem 0;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
 .grid-2 {
@@ -140,6 +153,7 @@ img {
   cursor: pointer;
   transition: all var(--transition-fast);
   border: 1px solid transparent;
+  white-space: nowrap;
 }
 
 .btn-primary {
@@ -230,6 +244,55 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 600;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: color var(--transition-fast);
+}
+
+.hamburger:hover {
+  color: var(--color-terracotta);
+}
+
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 76px; /* Approx navbar height */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 76px);
+    background-color: var(--bg-primary);
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 2rem;
+    transform: translateX(100%);
+    transition: transform var(--transition-smooth);
+    z-index: 999;
+  }
+  
+  .nav-links.active {
+    transform: translateX(0);
+  }
+  
+  .nav-link {
+    font-size: 1.25rem;
+  }
 }
 
 /* Footer */
@@ -338,10 +401,6 @@ img {
     grid-template-columns: 1fr;
   }
   
-  .nav-links {
-    display: none; /* Add hamburger menu later */
-  }
-  
   .dashboard-layout {
     flex-direction: column;
   }
@@ -354,3 +413,24 @@ img {
     padding: 1rem;
   }
 }
+
+/* Footer Links Hover Effects */
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-link:hover {
+  color: var(--color-terracotta) !important;
+}
+.social-icon {
+  color: inherit;
+  opacity: 0.8;
+  transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+.social-icon:hover {
+  color: var(--color-terracotta) !important;
+  transform: translateY(-2px);
+  opacity: 1 !important;
+}
+
