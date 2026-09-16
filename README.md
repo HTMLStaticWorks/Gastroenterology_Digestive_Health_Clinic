@@ -1,2 +1,0 @@
-# Gastroenterology_Digestive_Health_Clinic
-Automated website repository for Gastroenterology_Digestive_Health_Clinic

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Aura Digestive Health</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .services-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+      margin-top: 80px;
+    }
+
+    .services-hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .services-hero-content {
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: var(--bg-secondary);
+    }
+
+    .service-section {
+      padding: 6rem 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .service-section:nth-child(even) {
+      background-color: var(--bg-tertiary);
+      direction: rtl;
+    }
+
+    .service-section:nth-child(even)>* {
+      direction: ltr;
+    }
+
+    .service-content h2 {
+      font-size: 2.5rem;
+      color: var(--color-plum);
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+
+      .services-hero,
+      .service-section {
+        grid-template-columns: 1fr;
+      }
+
+      .service-section:nth-child(even) {
+        direction: ltr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="nav-brand">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-right: 0.6rem;">
+          <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2" />
+          <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8" />
+        </svg>
+        Aura Digestive</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link">Home 2</a>
+        <a href="services.html" class="nav-link" style="color: var(--color-terracotta);">Services</a>
+        <a href="doctors.html" class="nav-link">Doctors</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </div>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"></button>
+        <a href="login.html" class="btn btn-secondary">Patient Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="services-hero">
+      <img src="https://images.pexels.com/photos/4769122/pexels-photo-4769122.jpeg" alt="Advanced Endoscopy Equipment"
+        class="services-hero-img">
+      <div class="services-hero-content">
+        <h1 class="hero-title" style="font-size: 3rem;">Advanced Care for the Complete Digestive System</h1>
+        <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem;">Utilizing the latest in
+          diagnostic technology, our specialists provide comprehensive care tailored to your unique health profile.</p>
+        <div>
+          <a href="contact.html" class="btn btn-primary">Request Consultation</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-section">
+      <div class="service-content">
+        <h2>Endoscopy</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">An upper endoscopy allows our specialists to
+          directly visualize the lining of your esophagus, stomach, and duodenum. We use state-of-the-art equipment to
+          diagnose conditions like acid reflux, ulcers, and celiac disease with precision.</p>
+        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-left: 1.5rem;">
+          <li>Minimally invasive diagnostic procedure</li>
+          <li>Comfortable, sedation-assisted experience</li>
+          <li>Immediate insights into upper GI health</li>
+        </ul>
+      </div>
+      <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80"
+        alt="Digestive Health Service"
+        style="width: 100%; height: 400px; border-radius: var(--radius-lg); object-fit: cover; box-shadow: var(--shadow-sm);">
+    </section>
+
+    <section class="service-section">
+      <div class="service-content">
+        <h2>Colonoscopy</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Considered the gold standard for colon cancer
+          screening, a colonoscopy is a vital preventative procedure. Our clinic ensures a dignified, calm experience
+          while meticulously screening for polyps and other abnormalities.</p>
+        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-left: 1.5rem;">
+          <li>Critical for early cancer detection</li>
+          <li>Advanced polyp removal capabilities</li>
+          <li>Expert post-procedure care and guidance</li>
+        </ul>
+      </div>
+      <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=800&q=80"
+        alt="Digestive Health Service"
+        style="width: 100%; height: 400px; border-radius: var(--radius-lg); object-fit: cover; box-shadow: var(--shadow-sm);">
+    </section>
+
+    <!-- IBS Management -->
+    <section class="service-section">
+      <div class="service-content">
+        <h2>IBS Management</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Irritable Bowel Syndrome requires a highly
+          personalized, empathetic approach. Our specialists employ advanced motility testing, dietary mapping, and
+          evidence-based therapeutics to craft long-term management plans that restore your quality of life.</p>
+        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-left: 1.5rem;">
+          <li>Comprehensive dietary and motility analysis</li>
+          <li>Microbiome assessment and management</li>
+          <li>Ongoing support via our patient portal</li>
+        </ul>
+        <a href="contact.html" class="service-link">Discuss Your Symptoms &rarr;</a>
+      </div>
+      <img src="https://images.pexels.com/photos/8471918/pexels-photo-8471918.jpeg" alt="Digestive Health Service"
+        style="width: 100%; height: 400px; border-radius: var(--radius-lg); object-fit: cover; box-shadow: var(--shadow-sm);">
+    </section>
+
+    <!-- Consultation -->
+    <section class="service-section">
+      <div class="service-content">
+        <h2>Digestive Health Consultation</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">The foundation of effective gastroenterology is
+          the consultation. Taking place in our serene clinical suites, our specialists take the time to listen, review
+          complex histories, and architect bespoke diagnostic and treatment pathways.</p>
+        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-left: 1.5rem;">
+          <li>Unhurried, 60-minute initial evaluations</li>
+          <li>Holistic review of gastrointestinal health</li>
+          <li>Collaborative care planning</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary" style="margin-top: 1rem;">Book a Consultation</a>
+      </div>
+      <img src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg"
+        alt="Digestive Health Consultation"
+        style="width: 100%; height: 400px; border-radius: var(--radius-lg); object-fit: cover; box-shadow: var(--shadow-sm);">
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container"
+      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem;">
+      <div style="grid-column: span 2;">
+        <div class="nav-brand" style="color: var(--color-sand); margin-bottom: 1rem;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-right: 0.6rem;">
+            <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2" />
+            <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8" />
+          </svg>
+          Aura Digestive
+        </div>
+        <p style="color: rgba(255,255,255,0.7); max-width: 300px; margin-bottom: 2rem;">A sophisticated private
+          gastroenterology practice combining advanced digestive medicine with a premium patient experience.</p>
+        <div style="color: rgba(255,255,255,0.7);">
+          <p><strong>Contact</strong></p>
+          <p>+1 (800) 555-0199</p>
+          <p>concierge@auradigestive.com</p>
+          <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+            <a href="#" aria-label="Instagram" style="color: inherit; opacity: 0.8; transition: opacity 0.2s;"
+              onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" style="color: inherit; opacity: 0.8; transition: opacity 0.2s;"
+              onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" aria-label="Twitter" style="color: inherit; opacity: 0.8; transition: opacity 0.2s;"
+              onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Services</h4>
+        <ul
+          style="color: rgba(255,255,255,0.7); display: flex; flex-direction: column; gap: 0.8rem; list-style: none; padding: 0;">
+          <li><a href="services.html" style="color: inherit; text-decoration: none;">Endoscopy</a></li>
+          <li><a href="services.html" style="color: inherit; text-decoration: none;">Colonoscopy</a></li>
+          <li><a href="services.html" style="color: inherit; text-decoration: none;">IBS Management</a></li>
+          <li><a href="services.html" style="color: inherit; text-decoration: none;">Consultations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Clinic</h4>
+        <ul
+          style="color: rgba(255,255,255,0.7); display: flex; flex-direction: column; gap: 0.8rem; list-style: none; padding: 0;">
+          <li><a href="index.html" style="color: inherit; text-decoration: none;">Home</a></li>
+          <li><a href="doctors.html" style="color: inherit; text-decoration: none;">Our Specialists</a></li>
+          <li><a href="contact.html" style="color: inherit; text-decoration: none;">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Visit</h4>
+        <div style="color: rgba(255,255,255,0.7); line-height: 1.6;">
+          <p>1200 Wellness Boulevard<br>Suite 400<br>Beverly Hills, CA 90210</p>
+          <p style="margin-top: 1rem;"><strong>Hours</strong></p>
+          <p>Mon-Fri: 8am - 6pm</p>
+        </div>
+      </div>
+    </div>
+    <div class="container"
+      style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 4rem; padding-top: 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); gap: 1rem;">
+      <div>&copy; 2026 Aura Digestive Health. All rights reserved.</div>
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+        <a href="#" style="color: inherit; text-decoration: none;">Privacy Policy</a>
+        <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
+        <a href="login.html" style="color: var(--color-terracotta); text-decoration: none;">Patient Portal Login</a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
+  <script src="app.js"></script>
+</body>
+
+</html>

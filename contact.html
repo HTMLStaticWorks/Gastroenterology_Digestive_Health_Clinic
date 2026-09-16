@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Aura Digestive Health</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .contact-hero {
+      position: relative;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin-top: 80px;
+    }
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('assets/contact_hero.jpg') center/cover;
+      filter: brightness(0.6);
+      z-index: -1;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 6rem 5%;
+    }
+    .contact-form {
+      background: var(--bg-tertiary);
+      padding: 3rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .form-input {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: inherit;
+    }
+    .contact-info-block {
+      margin-bottom: 2rem;
+    }
+    .contact-info-block h4 {
+      color: var(--color-terracotta);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .contact-info-block p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+    }
+    
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container navbar-inner">
+    <a href="index.html" class="nav-brand">
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-right: 0.6rem;">
+    <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2"/>
+    <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8"/>
+  </svg>
+  Aura Digestive</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="home2.html" class="nav-link">Home 2</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="doctors.html" class="nav-link">Doctors</a>
+      <a href="contact.html" class="nav-link" style="color: var(--color-terracotta);">Contact</a>
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"></button>
+      <a href="login.html" class="btn btn-secondary">Patient Login</a>
+    </div>
+      </div>
+  </nav>
+
+  <main>
+    <section class="contact-hero">
+      <div class="container">
+        <h1 class="hero-title" style="color: white; font-size: 3.5rem;">Your Next Conversation Starts Here</h1>
+        <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Reach out to our specialists to discuss your digestive health needs in complete confidentiality.</p>
+      </div>
+    </section>
+
+    <section class="contact-grid container">
+      <div>
+        <h2 style="font-size: 2.5rem; color: var(--color-plum); margin-bottom: 3rem;">Connect With Us</h2>
+        
+        <div class="contact-info-block">
+          <h4>Clinic Location</h4>
+          <p>1200 Healthcare Avenue, Suite 400<br>Metropolis, NY 10001</p>
+        </div>
+        
+        <div class="contact-info-block">
+          <h4>Direct Contact</h4>
+          <p>+1 (800) 555-0199<br>care@auradigestive.com</p>
+        </div>
+        
+        <div class="contact-info-block">
+          <h4>Opening Hours</h4>
+          <p>Monday &ndash; Friday: 8:00 AM &ndash; 6:00 PM<br>Saturday &ndash; Sunday: Closed</p>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <h3 style="color: var(--color-plum); margin-bottom: 2rem;">Send a Message</h3>
+        <form>
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" placeholder="Jane Doe" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" placeholder="jane@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-input" placeholder="(555) 000-0000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Reason for Contact</label>
+            <select class="form-input">
+              <option>General Inquiry</option>
+              <option>Book Appointment</option>
+              <option>Medical Records</option>
+              <option>Billing Question</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-input" rows="4" placeholder="How can we assist you?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem;">
+      <div style="grid-column: span 2;">
+        <div class="nav-brand" style="color: var(--color-sand); margin-bottom: 1rem;">
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-right: 0.6rem;">
+    <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2"/>
+    <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8"/>
+  </svg>
+  Aura Digestive</div>
+        <p style="color: rgba(255,255,255,0.7); max-width: 300px; margin-bottom: 2rem;">A sophisticated private gastroenterology practice combining advanced digestive medicine with a premium patient experience.</p>
+        <div style="color: rgba(255,255,255,0.7);">
+          <p><strong>Contact</strong></p>
+          <p>+1 (800) 555-0199</p>
+                    <p>concierge@auradigestive.com</p>
+          <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+            <a href="#" aria-label="Instagram" style="color: inherit; opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" style="color: inherit; opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="#" aria-label="Twitter" style="color: inherit; opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Services</h4>
+        <ul style="color: rgba(255,255,255,0.7); display: flex; flex-direction: column; gap: 0.8rem; list-style: none; padding: 0;">
+          <li><a href="services.html" style="color: inherit; text-decoration: none;">Endoscopy</a></li>
+          <li><a href="services.html" style="color: inherit; text-decoration: none;">Colonoscopy</a></li>
+          <li><a href="services.html" style="color: inherit; text-decoration: none;">IBS Management</a></li>
+          <li><a href="services.html" style="color: inherit; text-decoration: none;">Consultations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Clinic</h4>
+        <ul style="color: rgba(255,255,255,0.7); display: flex; flex-direction: column; gap: 0.8rem; list-style: none; padding: 0;">
+          <li><a href="index.html" style="color: inherit; text-decoration: none;">Home</a></li>
+          <li><a href="doctors.html" style="color: inherit; text-decoration: none;">Our Specialists</a></li>
+          <li><a href="contact.html" style="color: inherit; text-decoration: none;">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Visit</h4>
+        <div style="color: rgba(255,255,255,0.7); line-height: 1.6;">
+          <p>1200 Wellness Boulevard<br>Suite 400<br>Beverly Hills, CA 90210</p>
+          <p style="margin-top: 1rem;"><strong>Hours</strong></p>
+          <p>Mon-Fri: 8am - 6pm</p>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 4rem; padding-top: 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); gap: 1rem;">
+      <div>&copy; 2026 Aura Digestive Health. All rights reserved.</div>
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+        <a href="#" style="color: inherit; text-decoration: none;">Privacy Policy</a>
+        <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
+        <a href="login.html" style="color: var(--color-terracotta); text-decoration: none;">Patient Portal Login</a>
+      </div>
+    </div>
+  </footer>
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+  <script src="app.js"></script>
+</body>
+</html>

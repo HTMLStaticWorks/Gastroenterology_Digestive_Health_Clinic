@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Portal | Aura Digestive Health</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background-color: var(--bg-secondary); }
+    
+    .dashboard-layout {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    .sidebar {
+      width: 260px;
+      background-color: var(--bg-primary);
+      border-right: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 0;
+    }
+    .sidebar-brand {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--color-plum);
+      padding: 0 1.5rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-item {
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all var(--transition-fast);
+      border-left: 3px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .nav-item:hover, .nav-item.active {
+      background-color: var(--bg-secondary);
+      color: var(--color-plum);
+      border-left-color: var(--color-plum);
+    }
+    
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .header {
+      height: 70px;
+      background-color: var(--bg-primary);
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background-color: var(--color-plum);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+    .content-area {
+      flex: 1;
+      padding: 2.5rem;
+      overflow-y: auto;
+    }
+    
+    .page-title {
+      font-size: 2rem;
+      color: var(--color-plum);
+      margin-bottom: 2rem;
+    }
+    
+    /* Tabs */
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .tab-pane.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Dashboard Common Styles */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .widget-card {
+      background-color: var(--bg-primary);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .widget-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .widget-value {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-family: var(--font-serif);
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: #e6f4ea;
+      color: #1e8e3e;
+      margin-top: 0.5rem;
+    }
+    .status-badge.pending { background: #fef7e0; color: #f29900; }
+    .status-badge.flagged { background: #fce8e6; color: #d93025; }
+    
+    .panel {
+      background-color: var(--bg-primary);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .panel-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .panel-header h3 { margin: 0; font-size: 1.2rem; color: var(--color-plum); }
+    
+    /* Data Table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .data-table th, .data-table td {
+      padding: 1rem 1.5rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .data-table th {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      font-weight: 600;
+      background: var(--bg-secondary);
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    
+    /* Appointment Item */
+    .appointment-item {
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1.5rem;
+      align-items: center;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .appointment-item:last-child { border-bottom: none; }
+    
+    .date-box {
+      background-color: var(--bg-secondary);
+      padding: 0.8rem;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      min-width: 80px;
+    }
+    .date-month { font-size: 0.8rem; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
+    .date-day { font-size: 1.5rem; font-weight: 600; color: var(--color-plum); }
+    
+    .app-details h4 { margin-bottom: 0.25rem; font-size: 1.1rem; }
+    .app-details p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.25rem; }
+    
+    /* Forms */
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      background: var(--bg-secondary);
+    }
+    
+    @media (max-width: 1024px) {
+      .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .appointment-item { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    
+    <aside class="sidebar">
+      <a href="index.html" class="sidebar-brand">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" style="margin-right: 0.6rem;">
+          <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2"/>
+          <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8"/>
+        </svg>
+        Aura Digestive
+      </a>
+      <nav>
+        <a onclick="switchTab('overview')" id="link-overview" class="nav-item active">Overview</a>
+        <a onclick="switchTab('appointments')" id="link-appointments" class="nav-item">Appointments</a>
+        <a onclick="switchTab('procedures')" id="link-procedures" class="nav-item">Procedures</a>
+        <a onclick="switchTab('test-results')" id="link-test-results" class="nav-item">Test Results</a>
+        <a onclick="switchTab('symptom-log')" id="link-symptom-log" class="nav-item">Symptom Log</a>
+        <a onclick="switchTab('billing')" id="link-billing" class="nav-item">Billing</a>
+        <div style="height: 1px; background: var(--border-light); margin: 1.5rem 0;"></div>
+        <a onclick="switchTab('profile')" id="link-profile" class="nav-item">Profile</a>
+        <a href="index.html" class="nav-item" style="color: var(--color-terracotta);">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="header">
+        <h2 style="font-size: 1.2rem; color: var(--text-primary); font-weight: 500;">Patient Portal</h2>
+        <div class="header-right">
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"></button>
+          <div class="user-profile">
+            <div class="avatar">JD</div>
+            <span style="font-weight: 500; font-size: 0.9rem;">Jane Doe</span>
+          </div>
+        </div>
+      </header>
+      
+      <div class="content-area">
+      
+        <!-- OVERVIEW TAB -->
+        <div id="tab-overview" class="tab-pane active">
+          <h1 class="page-title">Your Digestive Care</h1>
+          
+          <div class="dashboard-grid">
+            <div class="widget-card">
+              <div class="widget-title">Next Appointment</div>
+              <div class="widget-value">Oct 14, 2026</div>
+              <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">Endoscopy Consultation</div>
+            </div>
+            
+            <div class="widget-card">
+              <div class="widget-title">Latest Test Result</div>
+              <div class="widget-value">Blood Panel</div>
+              <div class="status-badge">Normal</div>
+            </div>
+            
+            <div class="widget-card">
+              <div class="widget-title">Billing Status</div>
+              <div class="widget-value">$0.00</div>
+              <div class="status-badge">All Paid</div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Upcoming Appointments</h3>
+              <button onclick="switchTab('appointments')" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View All</button>
+            </div>
+            
+            <div class="appointment-item">
+              <div class="date-box">
+                <div class="date-month">Oct</div>
+                <div class="date-day">14</div>
+              </div>
+              <div class="app-details">
+                <h4>Endoscopy Consultation</h4>
+                <p>Dr. Sarah Jenkins &bull; 10:30 AM</p>
+                <p>1200 Healthcare Avenue, Suite 400</p>
+              </div>
+              <div>
+                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- APPOINTMENTS TAB -->
+        <div id="tab-appointments" class="tab-pane">
+          <h1 class="page-title">Appointments</h1>
+          
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Upcoming</h3>
+              <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Book New Appointment</button>
+            </div>
+            <div class="appointment-item">
+              <div class="date-box">
+                <div class="date-month">Oct</div>
+                <div class="date-day">14</div>
+              </div>
+              <div class="app-details">
+                <h4>Endoscopy Consultation</h4>
+                <p>Dr. Sarah Jenkins &bull; 10:30 AM</p>
+                <p>1200 Healthcare Avenue, Suite 400</p>
+              </div>
+              <div style="display: flex; gap: 0.5rem;">
+                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Reschedule</button>
+                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; color: #d93025; border-color: #fce8e6;">Cancel</button>
+              </div>
+            </div>
+            <div class="appointment-item">
+              <div class="date-box">
+                <div class="date-month">Nov</div>
+                <div class="date-day">02</div>
+              </div>
+              <div class="app-details">
+                <h4>Follow-up Telehealth</h4>
+                <p>Dr. Alan Turing &bull; 02:00 PM</p>
+                <p>Video Call</p>
+              </div>
+              <div style="display: flex; gap: 0.5rem;">
+                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Join Call</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Past Appointments</h3>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Physician</th>
+                  <th>Summary</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sep 10, 2026</td>
+                  <td>Initial Consultation</td>
+                  <td>Dr. Sarah Jenkins</td>
+                  <td><a href="#" style="color: var(--color-terracotta);">View Notes</a></td>
+                </tr>
+                <tr>
+                  <td>Mar 05, 2026</td>
+                  <td>IBS Check-in</td>
+                  <td>Dr. Alan Turing</td>
+                  <td><a href="#" style="color: var(--color-terracotta);">View Notes</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PROCEDURES TAB -->
+        <div id="tab-procedures" class="tab-pane">
+          <h1 class="page-title">Procedures</h1>
+          
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Procedure History</h3>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Procedure</th>
+                  <th>Facility</th>
+                  <th>Documents</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Jan 15, 2025</td>
+                  <td>Upper Endoscopy (EGD)</td>
+                  <td>Aura Digestive Surgery Center</td>
+                  <td>
+                    <a href="#" style="color: var(--color-terracotta); margin-right: 1rem;">Post-Op Report (PDF)</a>
+                    <a href="#" style="color: var(--color-terracotta);">Pathology (PDF)</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Aug 22, 2022</td>
+                  <td>Colonoscopy</td>
+                  <td>Aura Digestive Surgery Center</td>
+                  <td>
+                    <a href="#" style="color: var(--color-terracotta);">Post-Op Report (PDF)</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="widget-card" style="background: var(--color-plum); color: white;">
+            <h3 style="margin-bottom: 0.5rem;">Preparing for an upcoming procedure?</h3>
+            <p style="opacity: 0.9; margin-bottom: 1rem;">Make sure to strictly follow the dietary and prep instructions provided by your clinical team.</p>
+            <button class="btn btn-primary" style="background: white; color: var(--color-plum); border-color: white;">View Prep Instructions</button>
+          </div>
+        </div>
+
+        <!-- TEST RESULTS TAB -->
+        <div id="tab-test-results" class="tab-pane">
+          <h1 class="page-title">Test Results</h1>
+          
+          <div class="panel">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Date Drawn</th>
+                  <th>Test Name</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sep 12, 2026</td>
+                  <td>Comprehensive Metabolic Panel</td>
+                  <td><span class="status-badge">Normal</span></td>
+                  <td><a href="#" style="color: var(--color-terracotta);">View Report</a></td>
+                </tr>
+                <tr>
+                  <td>Sep 12, 2026</td>
+                  <td>Celiac Disease Panel</td>
+                  <td><span class="status-badge pending">Pending</span></td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>Feb 10, 2026</td>
+                  <td>Fecal Calprotectin</td>
+                  <td><span class="status-badge flagged">Flagged</span></td>
+                  <td><a href="#" style="color: var(--color-terracotta);">View Report</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SYMPTOM LOG TAB -->
+        <div id="tab-symptom-log" class="tab-pane">
+          <h1 class="page-title">Symptom Log</h1>
+          <p style="color: var(--text-secondary); margin-bottom: 2rem;">Logging your symptoms helps our team tailor your treatment plan accurately.</p>
+          
+          <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+            <div class="panel" style="margin-bottom: 0;">
+              <div class="panel-header">
+                <h3>New Entry</h3>
+              </div>
+              <div style="padding: 1.5rem;">
+                <div class="form-group">
+                  <label>Date</label>
+                  <input type="date" class="form-control" value="2026-09-16">
+                </div>
+                <div class="form-group">
+                  <label>Pain Level (1-10)</label>
+                  <input type="number" min="1" max="10" class="form-control" placeholder="e.g. 4">
+                </div>
+                <div class="form-group">
+                  <label>Primary Symptoms</label>
+                  <select class="form-control">
+                    <option>Bloating</option>
+                    <option>Acid Reflux</option>
+                    <option>Abdominal Pain</option>
+                    <option>Nausea</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Notes (Triggers, Diet)</label>
+                  <textarea class="form-control" rows="4" placeholder="What did you eat today?"></textarea>
+                </div>
+                <button class="btn btn-primary" style="width: 100%;">Save Entry</button>
+              </div>
+            </div>
+            
+            <div class="panel" style="margin-bottom: 0;">
+              <div class="panel-header">
+                <h3>Recent Logs</h3>
+              </div>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Symptoms</th>
+                    <th>Pain</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sep 15, 2026</td>
+                    <td>Bloating, Mild Nausea</td>
+                    <td>3/10</td>
+                  </tr>
+                  <tr>
+                    <td>Sep 14, 2026</td>
+                    <td>Acid Reflux</td>
+                    <td>5/10</td>
+                  </tr>
+                  <tr>
+                    <td>Sep 10, 2026</td>
+                    <td>Severe Abdominal Pain</td>
+                    <td>8/10</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BILLING TAB -->
+        <div id="tab-billing" class="tab-pane">
+          <h1 class="page-title">Billing & Insurance</h1>
+          
+          <div class="dashboard-grid">
+            <div class="widget-card" style="border-left: 4px solid #1e8e3e;">
+              <div class="widget-title">Current Balance</div>
+              <div class="widget-value">$0.00</div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">No payment due at this time.</p>
+            </div>
+            <div class="widget-card">
+              <div class="widget-title">Insurance on File</div>
+              <div class="widget-value" style="font-size: 1.2rem; margin-top: 0.5rem;">BlueCross BlueShield</div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">PPO Plan &bull; Ends 12/31/2026</p>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Recent Statements</h3>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sep 10, 2026</td>
+                  <td>Office Visit - Dr. Jenkins</td>
+                  <td>$45.00 (Copay)</td>
+                  <td><span class="status-badge">Paid</span></td>
+                </tr>
+                <tr>
+                  <td>Feb 10, 2026</td>
+                  <td>Lab Work</td>
+                  <td>$12.50</td>
+                  <td><span class="status-badge">Paid</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PROFILE TAB -->
+        <div id="tab-profile" class="tab-pane">
+          <h1 class="page-title">Patient Profile</h1>
+          
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Personal Information</h3>
+              <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Edit</button>
+            </div>
+            <div style="padding: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" value="Jane Doe" readonly>
+              </div>
+              <div class="form-group">
+                <label>Date of Birth</label>
+                <input type="text" class="form-control" value="05/14/1985" readonly>
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" class="form-control" value="jane@example.com" readonly>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" class="form-control" value="(555) 000-0000" readonly>
+              </div>
+              <div class="form-group" style="grid-column: span 2;">
+                <label>Address</label>
+                <input type="text" class="form-control" value="123 Main St, Apt 4B, Los Angeles, CA 90001" readonly>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+      </div>
+    </main>
+  </div>
+  
+  <script src="app.js"></script>
+  <script>
+    function switchTab(tabId) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-pane').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      
+      // Show selected tab
+      document.getElementById('tab-' + tabId).classList.add('active');
+      
+      // Update sidebar nav links
+      document.querySelectorAll('.sidebar .nav-item').forEach(link => {
+        link.classList.remove('active');
+      });
+      document.getElementById('link-' + tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>

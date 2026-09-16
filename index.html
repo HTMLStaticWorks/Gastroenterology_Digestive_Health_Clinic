@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gastroenterology & Digestive Health | Premium Care</title>
+  <meta name="description" content="A sophisticated private gastroenterology practice combining advanced digestive medicine with a premium patient experience.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Home Specific Styles */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 90vh;
+      align-items: center;
+      padding-top: 80px; /* Offset navbar */
+    }
+    .hero-content {
+      padding-right: 4rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-terracotta);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .hero-title {
+      font-size: 4rem;
+      color: var(--color-plum);
+      margin-bottom: 2rem;
+    }
+    .hero-desc {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      max-width: 90%;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    .hero-image-wrapper {
+      position: relative;
+      height: 80%;
+    }
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      box-shadow: var(--shadow-lg);
+    }
+    .floating-card {
+      position: absolute;
+      bottom: 2rem;
+      left: -2rem;
+      background: var(--bg-primary);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      color: var(--color-plum);
+      margin-bottom: 4rem;
+    }
+    
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      border: 1px solid var(--border-light);
+      transition: all var(--transition-smooth);
+    }
+    .service-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-5px);
+    }
+    .service-card h3 {
+      font-size: 1.5rem;
+      color: var(--color-plum);
+      margin-bottom: 1rem;
+    }
+    .service-card p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .service-link {
+      font-weight: 600;
+      color: var(--color-terracotta);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    @media (max-width: 1024px) {
+      .hero-title { font-size: 3rem; }
+      .hero-content { padding-right: 2rem; }
+    }
+    @media (max-width: 768px) {
+      .hero-split {
+        grid-template-columns: 1fr;
+        padding-top: 120px;
+        text-align: center;
+        gap: 3rem;
+      }
+      .hero-content { padding-right: 0; }
+      .hero-actions { justify-content: center; flex-wrap: wrap; }
+      .hero-image-wrapper { height: 400px; border-radius: var(--radius-lg); }
+      .floating-card { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container navbar-inner">
+    <a href="index.html" class="nav-brand">
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-right: 0.6rem;">
+    <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2"/>
+    <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8"/>
+  </svg>
+  Aura Digestive</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link" style="color: var(--color-terracotta);">Home</a>
+      <a href="home2.html" class="nav-link">Home 2</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="doctors.html" class="nav-link">Doctors</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"></button>
+      <a href="login.html" class="btn btn-secondary">Patient Login</a>
+    </div>
+      </div>
+  </nav>
+
+  <main>
+    <section class="container hero-split">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Gastroenterology & Digestive Health</span>
+        <h1 class="hero-title">Precision. Calm. Human Care.</h1>
+        <p class="hero-desc">Experience advanced digestive medicine in a sophisticated, calm environment designed around your profound well-being.</p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn btn-primary">Book an Appointment</a>
+          <a href="services.html" class="btn btn-secondary">Explore Our Care</a>
+        </div>
+      </div>
+      <div class="hero-image-wrapper">
+        <img src="assets/home2_hero.jpg" alt="Premium Gastroenterology Consultation" class="hero-image">
+        <div class="floating-card">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-copper)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <div>
+            <div style="font-weight: 600; font-size: 0.9rem;">Specialist-led care</div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary)">Advanced diagnostics</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background-color: var(--bg-secondary);">
+      <div class="container">
+        <h2 class="section-title">Digestive Health, Reimagined</h2>
+        <div class="grid-2" style="margin-bottom: 4rem;">
+          <div>
+            <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">Our philosophy transcends traditional clinical environments. We believe that precise, world-class diagnostic medicine must be delivered in an atmosphere that inspires calm and confidence. Your digestive system is at the core of your well-being, and our bespoke approach ensures that every aspect of your care is handled with unparalleled expertise.</p>
+            <a href="about.html" class="service-link">Read our philosophy &rarr;</a>
+          </div>
+          <div style="border-left: 1px solid var(--border-dark); padding-left: 3rem;">
+            <h3 style="color: var(--color-plum); margin-bottom: 1.5rem;">Areas of Care</h3>
+            <ul style="display: flex; flex-direction: column; gap: 1.5rem; color: var(--text-secondary);">
+              <li style="display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 8px; height: 8px; background: var(--color-terracotta); border-radius: 50%;"></div>
+                <strong>Endoscopy & Advanced Imaging</strong>
+              </li>
+              <li style="display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 8px; height: 8px; background: var(--color-terracotta); border-radius: 50%;"></div>
+                <strong>Colonoscopy & Preventative Screening</strong>
+              </li>
+              <li style="display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 8px; height: 8px; background: var(--color-terracotta); border-radius: 50%;"></div>
+                <strong>IBS & Chronic Symptom Management</strong>
+              </li>
+              <li style="display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 8px; height: 8px; background: var(--color-terracotta); border-radius: 50%;"></div>
+                <strong>Personalized Digestive Consultations</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Precision in Every Diagnosis -->
+    <section class="section container">
+      <div class="grid-2" style="align-items: center;">
+        <div style="border-radius: var(--radius-lg); overflow: hidden; height: 500px;">
+          <img src="assets/services_hero.jpg" alt="Clinical precision" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div>
+          <span class="hero-eyebrow">State-of-the-art</span>
+          <h2 style="font-size: 2.5rem; color: var(--color-plum); margin-bottom: 1.5rem;">Precision in Every Diagnosis</h2>
+          <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+            We utilize the most advanced diagnostic equipment available in modern medicine. Our state-of-the-art endoscopy and imaging suites are designed to detect microscopic anomalies earlier, ensuring that your treatment plan is based on the most accurate and comprehensive data possible.
+          </p>
+          <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+            <li style="padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-sm); font-weight: 500;">High-Definition Imaging</li>
+            <li style="padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-sm); font-weight: 500;">AI-Assisted Diagnostics</li>
+            <li style="padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-sm); font-weight: 500;">Minimally Invasive</li>
+            <li style="padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-sm); font-weight: 500;">Rapid Results</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Patient Experience Journey -->
+    <section class="section" style="background-color: var(--color-plum); color: var(--text-light);">
+      <div class="container text-center">
+        <h2 style="font-size: 2.5rem; margin-bottom: 4rem; text-align: center;">The Patient Journey</h2>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center;">
+          
+          <div>
+            <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; font-weight: bold; color: var(--color-terracotta);">1</div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Consult</h3>
+            <p style="font-size: 0.9rem; opacity: 0.8;">In-depth, unhurried conversations to understand your complete health history.</p>
+          </div>
+          
+          <div>
+            <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; font-weight: bold; color: var(--color-terracotta);">2</div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Diagnose</h3>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Advanced, comfortable diagnostic procedures tailored to your symptoms.</p>
+          </div>
+
+          <div>
+            <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; font-weight: bold; color: var(--color-terracotta);">3</div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Treat</h3>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Evidence-based, personalized treatment protocols managed by specialists.</p>
+          </div>
+
+          <div>
+            <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; font-weight: bold; color: var(--color-terracotta);">4</div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Follow Up</h3>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Continuous monitoring through our premium digital patient portal.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section container" style="text-align: center; padding: 8rem 5%;">
+      <h2 style="font-size: 3rem; color: var(--color-plum); margin-bottom: 1.5rem;">Take Control of Your Digestive Health</h2>
+      <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 3rem;">
+        Experience a higher standard of gastroenterological care. Our specialists are ready to help you navigate your health with confidence and clarity.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1.5rem;">
+        <a href="contact.html" class="btn btn-primary" style="padding: 1.2rem 3rem; font-size: 1.1rem;">Schedule Your Consultation</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem;">
+      <div style="grid-column: span 2;">
+        <div class="nav-brand" style="color: var(--color-sand); margin-bottom: 1rem;">
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-right: 0.6rem;">
+    <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2"/>
+    <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8"/>
+  </svg>
+  Aura Digestive</div>
+        <p style="color: rgba(255,255,255,0.7); max-width: 300px; margin-bottom: 2rem;">A sophisticated private gastroenterology practice combining advanced digestive medicine with a premium patient experience.</p>
+        <div style="color: rgba(255,255,255,0.7);">
+          <p><strong>Contact</strong></p>
+          <p>+1 (800) 555-0199</p>
+                    <p>concierge@auradigestive.com</p>
+          <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+            <a href="#" aria-label="Instagram" style="color: inherit; opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" style="color: inherit; opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="#" aria-label="Twitter" style="color: inherit; opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Services</h4>
+        <ul style="color: rgba(255,255,255,0.7); display: flex; flex-direction: column; gap: 0.8rem; list-style: none; padding: 0;">
+          <li><a href="services.html" style="color: inherit; text-decoration: none;">Endoscopy</a></li>
+          <li><a href="services.html" style="color: inherit; text-decoration: none;">Colonoscopy</a></li>
+          <li><a href="services.html" style="color: inherit; text-decoration: none;">IBS Management</a></li>
+          <li><a href="services.html" style="color: inherit; text-decoration: none;">Consultations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Clinic</h4>
+        <ul style="color: rgba(255,255,255,0.7); display: flex; flex-direction: column; gap: 0.8rem; list-style: none; padding: 0;">
+          <li><a href="index.html" style="color: inherit; text-decoration: none;">Home</a></li>
+          <li><a href="doctors.html" style="color: inherit; text-decoration: none;">Our Specialists</a></li>
+          <li><a href="contact.html" style="color: inherit; text-decoration: none;">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Visit</h4>
+        <div style="color: rgba(255,255,255,0.7); line-height: 1.6;">
+          <p>1200 Wellness Boulevard<br>Suite 400<br>Beverly Hills, CA 90210</p>
+          <p style="margin-top: 1rem;"><strong>Hours</strong></p>
+          <p>Mon-Fri: 8am - 6pm</p>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 4rem; padding-top: 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); gap: 1rem;">
+      <div>&copy; 2026 Aura Digestive Health. All rights reserved.</div>
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+        <a href="#" style="color: inherit; text-decoration: none;">Privacy Policy</a>
+        <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
+        <a href="login.html" style="color: var(--color-terracotta); text-decoration: none;">Patient Portal Login</a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <script src="app.js"></script>
+</body>
+</html>
