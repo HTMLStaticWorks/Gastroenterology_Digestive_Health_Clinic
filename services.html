@@ -42,11 +42,12 @@
 
     .service-section:nth-child(even) {
       background-color: var(--bg-tertiary);
-      direction: rtl;
     }
-
-    .service-section:nth-child(even)>* {
-      direction: ltr;
+    .service-section:nth-child(even) > :first-child {
+      order: 2;
+    }
+    .service-section:nth-child(even) > :last-child {
+      order: 1;
     }
 
     .service-content h2 {
@@ -62,8 +63,11 @@
         grid-template-columns: 1fr;
       }
 
-      .service-section:nth-child(even) {
-        direction: ltr;
+      .service-section:nth-child(even) > :first-child {
+        order: unset;
+      }
+      .service-section:nth-child(even) > :last-child {
+        order: unset;
       }
     }
   </style>
@@ -74,11 +78,11 @@
   <nav class="navbar">
     <div class="container navbar-inner">
       <a href="index.html" class="nav-brand">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-right: 0.6rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem;">
           <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2" />
           <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8" />
         </svg>
-        Aura</a>
+      AURA</a>
       <div class="nav-links">
         <a href="index.html" class="nav-link">Home</a>
         <a href="home2.html" class="nav-link">Home 2</a>
@@ -88,7 +92,19 @@
         <a href="dashboard.html" class="nav-link">Dashboard</a>
       </div>
       <div class="nav-actions">
+        <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle language direction" style="margin-inline-end: 0.5rem;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3 4 7l4 4"/>
+            <path d="M4 7h16"/>
+            <path d="m16 21 4-4-4-4"/>
+            <path d="M20 17H4"/>
+          </svg>
+        </button>
+
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"></button>
+      <button id="mobile-menu-toggle" class="hamburger" aria-label="Toggle navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hamburger-icon-open"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
         <a href="login.html" class="btn btn-secondary">Patient Login</a>
       </div>
     </div>
@@ -114,7 +130,7 @@
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">An upper endoscopy allows our specialists to
           directly visualize the lining of your esophagus, stomach, and duodenum. We use state-of-the-art equipment to
           diagnose conditions like acid reflux, ulcers, and celiac disease with precision.</p>
-        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-left: 1.5rem;">
+        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-inline-start: 1.5rem;">
           <li>Minimally invasive diagnostic procedure</li>
           <li>Comfortable, sedation-assisted experience</li>
           <li>Immediate insights into upper GI health</li>
@@ -131,7 +147,7 @@
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">Considered the gold standard for colon cancer
           screening, a colonoscopy is a vital preventative procedure. Our clinic ensures a dignified, calm experience
           while meticulously screening for polyps and other abnormalities.</p>
-        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-left: 1.5rem;">
+        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-inline-start: 1.5rem;">
           <li>Critical for early cancer detection</li>
           <li>Advanced polyp removal capabilities</li>
           <li>Expert post-procedure care and guidance</li>
@@ -149,7 +165,7 @@
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">Irritable Bowel Syndrome requires a highly
           personalized, empathetic approach. Our specialists employ advanced motility testing, dietary mapping, and
           evidence-based therapeutics to craft long-term management plans that restore your quality of life.</p>
-        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-left: 1.5rem;">
+        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-inline-start: 1.5rem;">
           <li>Comprehensive dietary and motility analysis</li>
           <li>Microbiome assessment and management</li>
           <li>Ongoing support via our patient portal</li>
@@ -167,7 +183,7 @@
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">The foundation of effective gastroenterology is
           the consultation. Taking place in our serene clinical suites, our specialists take the time to listen, review
           complex histories, and architect bespoke diagnostic and treatment pathways.</p>
-        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-left: 1.5rem;">
+        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-inline-start: 1.5rem;">
           <li>Unhurried, 60-minute initial evaluations</li>
           <li>Holistic review of gastrointestinal health</li>
           <li>Collaborative care planning</li>
@@ -185,7 +201,7 @@
     <div class="container footer-grid">
       <div>
         <div class="nav-brand" style="color: var(--color-sand); margin-bottom: 1rem;">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-right: 0.6rem;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem;">
             <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2" />
             <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8" />
           </svg>

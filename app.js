@@ -63,11 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (mobileMenuToggle && navLinks) {
     const actionBtn = document.querySelector('.nav-actions .btn') || document.querySelector('.nav-links .btn');
+    const rtlToggle = document.getElementById('rtl-toggle');
     
     function handleMenuResize() {
       if (window.innerWidth <= 900) {
         if (themeToggle && themeToggle.parentElement !== navLinks) {
           navLinks.appendChild(themeToggle);
+        }
+        if (rtlToggle && rtlToggle.parentElement !== navLinks) {
+          navLinks.appendChild(rtlToggle);
         }
         if (actionBtn && actionBtn.parentElement !== navLinks) {
           navLinks.appendChild(actionBtn);
@@ -75,6 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         if (themeToggle && navActions && themeToggle.parentElement !== navActions) {
           navActions.insertBefore(themeToggle, mobileMenuToggle);
+        }
+        if (rtlToggle && navActions && rtlToggle.parentElement !== navActions) {
+          navActions.insertBefore(rtlToggle, themeToggle || mobileMenuToggle);
         }
         if (actionBtn && navActions && actionBtn.parentElement !== navActions) {
           navActions.appendChild(actionBtn);
@@ -93,6 +100,37 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hamburger-icon-close"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
       } else {
         mobileMenuToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hamburger-icon-open"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+      }
+    });
+  }
+});
+
+
+// RTL Toggle functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const rtlToggle = document.getElementById('rtl-toggle');
+  
+  // Check for saved preference
+  const savedRtl = localStorage.getItem('rtl') === 'true';
+  if (savedRtl) {
+    document.documentElement.setAttribute('dir', 'rtl');
+    document.documentElement.setAttribute('lang', 'ar');
+  } else {
+    document.documentElement.setAttribute('dir', 'ltr');
+    document.documentElement.setAttribute('lang', 'en');
+  }
+
+  if (rtlToggle) {
+    rtlToggle.addEventListener('click', () => {
+      const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+      if (isRtl) {
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        localStorage.setItem('rtl', 'false');
+      } else {
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'ar');
+        localStorage.setItem('rtl', 'true');
       }
     });
   }

@@ -8,11 +8,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=2">
   <style>
-    body { overflow-x: hidden; }
+    body { background-color: var(--bg-secondary); }
     .auth-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       min-height: 100vh;
+      padding: 2rem;
     }
     .auth-image {
       background: url('assets/signup_bg.jpg') center/cover;
@@ -26,15 +28,15 @@
       height: 100vh;
     }
     .auth-form-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 4rem;
+      width: 100%;
+      max-width: 550px;
+      padding: 3.5rem;
       background-color: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      position: relative;
     }
     .auth-form-wrapper {
-      max-width: 500px;
-      margin: 0 auto;
       width: 100%;
     }
     .auth-logo {
@@ -76,15 +78,11 @@
 <body>
 
   <div class="auth-layout">
-    <div class="auth-image">
-      <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Your Journey to Better Health.</h2>
-      <p style="font-size: 1.1rem; max-width: 400px; opacity: 0.9;">Join Aura and take control of your well-being with our premium patient portal.</p>
-    </div>
     
     <div class="auth-form-container">
       <div class="auth-form-wrapper">
         <a href="index.html" class="auth-logo" style="display: flex; align-items: center; justify-content: center; width: 100%;">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-right: 0.6rem;">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem;">
               <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2"/>
               <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8"/>
             </svg>
@@ -100,15 +98,13 @@
             <input type="text" class="auth-input" placeholder="Jane Doe" required>
           </div>
           
-          <div class="form-row">
-            <div class="auth-form-group">
-              <label class="auth-label">Email Address</label>
-              <input type="email" class="auth-input" placeholder="jane@example.com" required>
-            </div>
-            <div class="auth-form-group">
-              <label class="auth-label">Phone Number</label>
-              <input type="tel" class="auth-input" placeholder="(555) 000-0000" required>
-            </div>
+          <div class="auth-form-group">
+            <label class="auth-label">Email Address</label>
+            <input type="email" class="auth-input" placeholder="jane@example.com" required>
+          </div>
+          <div class="auth-form-group">
+            <label class="auth-label">Phone Number</label>
+            <input type="tel" class="auth-input" placeholder="(555) 000-0000" required>
           </div>
           
           <div class="auth-form-group">
@@ -116,15 +112,13 @@
             <input type="date" class="auth-input" required>
           </div>
           
-          <div class="form-row">
-            <div class="auth-form-group">
-              <label class="auth-label">Password</label>
-              <input type="password" class="auth-input" placeholder="••••••••" required>
-            </div>
-            <div class="auth-form-group">
-              <label class="auth-label">Confirm Password</label>
-              <input type="password" class="auth-input" placeholder="••••••••" required>
-            </div>
+          <div class="auth-form-group">
+            <label class="auth-label">Password</label>
+            <input type="password" class="auth-input" placeholder="••••••••" required>
+          </div>
+          <div class="auth-form-group">
+            <label class="auth-label">Confirm Password</label>
+            <input type="password" class="auth-input" placeholder="••••••••" required>
           </div>
           
           <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; margin-bottom: 2rem;">Create Account</button>

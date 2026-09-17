@@ -74,7 +74,9 @@
 }
 
 html {
-  font-size: 14px;
+  font-size: 16px;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -119,7 +121,7 @@ img {
 
 @media (max-width: 1024px) {
   .container {
-    padding: 0 4rem;
+    padding: 0 2rem;
   }
 }
 
@@ -153,7 +155,9 @@ img {
   cursor: pointer;
   transition: all var(--transition-fast);
   border: 1px solid transparent;
-  white-space: nowrap;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
 }
 
 .btn-primary {
@@ -244,6 +248,7 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 600;
+  white-space: nowrap !important;
 }
 
 /* Hamburger Menu */
@@ -273,7 +278,7 @@ img {
   .nav-links {
     position: fixed;
     top: 76px; /* Approx navbar height */
-    left: 0;
+    inset-inline-start: 0;
     width: 100%;
     height: calc(100vh - 76px);
     background-color: var(--bg-primary);
@@ -304,11 +309,11 @@ img {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2.5fr 1fr 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 2rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
@@ -344,7 +349,7 @@ img {
 .back-to-top {
   position: fixed;
   bottom: 2rem;
-  right: 2rem;
+  inset-inline-end: 2rem;
   width: 50px;
   height: 50px;
   background-color: var(--color-plum);
@@ -382,7 +387,7 @@ img {
 .dashboard-sidebar {
   width: 280px;
   background-color: var(--bg-tertiary);
-  border-right: 1px solid var(--border-light);
+  border-inline-end: 1px solid var(--border-light);
   display: flex;
   flex-direction: column;
   padding: 2rem 0;
@@ -408,7 +413,7 @@ img {
   .dashboard-sidebar {
     width: 100%;
     height: auto;
-    border-right: none;
+    border-inline-end: none;
     border-bottom: 1px solid var(--border-light);
     padding: 1rem;
   }
@@ -434,3 +439,11 @@ img {
   opacity: 1 !important;
 }
 
+
+@media (max-width: 1150px) {
+  .nav-links { gap: 1rem; }
+  .nav-link { font-size: 0.75rem; letter-spacing: 0.05em; }
+  .navbar .btn { padding: 0.5rem 1rem !important; font-size: 0.75rem; }
+  .nav-actions { gap: 0.8rem; }
+  .nav-brand { font-size: 1.2rem; }
+}
