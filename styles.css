@@ -79,6 +79,12 @@ html {
   overflow-x: hidden;
 }
 
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
@@ -127,7 +133,7 @@ img {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 2rem;
+    padding: 0 1rem;
   }
 }
 
@@ -401,6 +407,12 @@ img {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .btn {
+    white-space: nowrap !important;
+  }
+}
+
 @media (max-width: 768px) {
   .grid-2 {
     grid-template-columns: 1fr;
@@ -416,6 +428,10 @@ img {
     border-inline-end: none;
     border-bottom: 1px solid var(--border-light);
     padding: 1rem;
+  }
+  
+  .btn {
+    white-space: nowrap !important;
   }
 }
 

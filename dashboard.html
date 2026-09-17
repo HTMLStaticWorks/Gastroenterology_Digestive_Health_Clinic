@@ -188,6 +188,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
     .panel-header h3 { margin: 0; font-size: 1.2rem; color: var(--color-plum); }
     
@@ -403,9 +405,7 @@
         </div>
         <div class="header-right">
           <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"></button>
-      <button id="mobile-menu-toggle" class="hamburger" aria-label="Toggle navigation">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hamburger-icon-open"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
+
           <div class="user-profile">
             <div class="avatar">JD</div>
             <span class="user-name">Jane Doe</span>

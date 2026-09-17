@@ -99,12 +99,23 @@
       display: block;
       border-bottom: 1px solid var(--border-light);
     }
+    @media (max-width: 1024px) {
+      .service-card-img {
+        height: auto;
+        aspect-ratio: 16 / 9;
+      }
+    }
 
     .service-card-content {
       padding: 2rem;
       flex: 1;
       display: flex;
       flex-direction: column;
+    }
+    @media (max-width: 768px) {
+      .service-card-content {
+        padding: 1.25rem 1rem;
+      }
     }
 
     .service-card-content h3 {
@@ -185,6 +196,9 @@
       display: flex;
       gap: 1rem;
     }
+    .hero-actions .btn {
+      flex: 1;
+    }
     .hero-image-wrapper {
       position: relative;
       height: 80%;
@@ -224,7 +238,8 @@
     .service-card {
       background: var(--bg-tertiary);
       border-radius: var(--radius-md);
-      padding: 2.5rem;
+      padding: 0;
+      overflow: hidden;
       border: 1px solid var(--border-light);
       transition: all var(--transition-smooth);
     }
@@ -236,10 +251,12 @@
       font-size: 1.5rem;
       color: var(--color-plum);
       margin-bottom: 1rem;
+      white-space: nowrap;
     }
     .service-card p {
       color: var(--text-secondary);
       margin-bottom: 1.5rem;
+      text-align: left;
     }
     .service-link {
       font-weight: 600;
@@ -297,11 +314,13 @@
       font-size: 1.5rem;
       color: var(--color-plum);
       margin-bottom: 1rem;
+      white-space: nowrap;
     }
 
     .service-card p {
       color: var(--text-secondary);
       margin-bottom: 1.5rem;
+      text-align: left;
     }
 
     .service-link {
@@ -466,7 +485,7 @@
     </section>
 
     <section class="specialist-section">
-      <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+      <div class="container grid-2" style="align-items: center;">
         <div>
           <h2 style="font-size: 2.5rem; color: var(--color-sand); margin-bottom: 1.5rem;">Expertise That Listens</h2>
           <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8;">Our
