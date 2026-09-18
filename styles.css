@@ -277,6 +277,10 @@ img {
 }
 
 @media (max-width: 900px) {
+  .nav-actions {
+    gap: 0.5rem;
+  }
+  
   .hamburger {
     display: flex;
   }
@@ -349,6 +353,28 @@ img {
 }
 .theme-toggle:hover {
   color: var(--color-terracotta);
+}
+
+/* Auth Top Actions & Layout */
+.auth-top-actions {
+  position: fixed;
+  top: 1.5rem;
+  inset-inline-end: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 1000;
+}
+
+@media (max-width: 900px) {
+  .auth-layout {
+    padding-top: 4.5rem !important;
+    align-items: flex-start !important;
+  }
+  .auth-top-actions {
+    top: 1rem;
+    inset-inline-end: 1rem;
+  }
 }
 
 /* Back to Top */

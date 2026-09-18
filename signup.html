@@ -68,14 +68,30 @@
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
     }
-    @media (max-width: 768px) {
-      .auth-layout { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+      .auth-layout {
+        grid-template-columns: 1fr;
+        padding-top: 4.5rem;
+        align-items: flex-start;
+      }
       .auth-image { display: none; }
       .auth-form-container { padding: 2rem; }
     }
   </style>
 </head>
 <body>
+
+  <div class="auth-top-actions">
+    <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle language direction">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 3 4 7l4 4"/>
+        <path d="M4 7h16"/>
+        <path d="m16 21 4-4-4-4"/>
+        <path d="M20 17H4"/>
+      </svg>
+    </button>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"></button>
+  </div>
 
   <div class="auth-layout">
     

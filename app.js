@@ -63,26 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (mobileMenuToggle && navLinks) {
     const actionBtn = document.querySelector('.nav-actions .btn') || document.querySelector('.nav-links .btn');
-    const rtlToggle = document.getElementById('rtl-toggle');
     
     function handleMenuResize() {
       if (window.innerWidth <= 900) {
-        if (themeToggle && themeToggle.parentElement !== navLinks) {
-          navLinks.appendChild(themeToggle);
-        }
-        if (rtlToggle && rtlToggle.parentElement !== navLinks) {
-          navLinks.appendChild(rtlToggle);
-        }
         if (actionBtn && actionBtn.parentElement !== navLinks) {
           navLinks.appendChild(actionBtn);
         }
       } else {
-        if (themeToggle && navActions && themeToggle.parentElement !== navActions) {
-          navActions.insertBefore(themeToggle, mobileMenuToggle);
-        }
-        if (rtlToggle && navActions && rtlToggle.parentElement !== navActions) {
-          navActions.insertBefore(rtlToggle, themeToggle || mobileMenuToggle);
-        }
         if (actionBtn && navActions && actionBtn.parentElement !== navActions) {
           navActions.appendChild(actionBtn);
         }

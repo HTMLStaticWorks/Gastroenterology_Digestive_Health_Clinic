@@ -67,26 +67,34 @@
       margin-bottom: 2rem;
       font-size: 0.9rem;
     }
-    @media (max-width: 768px) {
-      .auth-layout { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+      .auth-layout {
+        grid-template-columns: 1fr;
+        padding-top: 4.5rem;
+        align-items: flex-start;
+      }
       .auth-image { display: none; }
-    }
-    .login-theme-btn {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
+      .auth-form-container { padding: 2rem; }
     }
   </style>
 </head>
 <body>
 
+  <div class="auth-top-actions">
+    <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle language direction">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 3 4 7l4 4"/>
+        <path d="M4 7h16"/>
+        <path d="m16 21 4-4-4-4"/>
+        <path d="M20 17H4"/>
+      </svg>
+    </button>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"></button>
+  </div>
+
   <div class="auth-layout">
     
     <div class="auth-form-container">
-      <button id="theme-toggle" class="theme-toggle login-theme-btn" aria-label="Toggle dark mode"></button>
-      <button id="mobile-menu-toggle" class="hamburger" aria-label="Toggle navigation">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hamburger-icon-open"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
       <div class="auth-form-wrapper">
         <a href="index.html" class="auth-logo" style="display: flex; align-items: center; justify-content: center; width: 100%;">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem;">
