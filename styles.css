@@ -293,9 +293,10 @@ img {
     height: calc(100vh - 76px);
     background-color: var(--bg-primary);
     flex-direction: column;
-    justify-content: center;
-    gap: 2.5rem;
-    padding: 2rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 2rem 1.5rem;
     transform: translateX(100%);
     transition: transform var(--transition-smooth);
     z-index: 999;
@@ -306,7 +307,19 @@ img {
   }
   
   .nav-link {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    text-transform: none;
+    letter-spacing: normal;
+    text-align: left;
+  }
+  
+  /* Highlight effect for active or hovered links in mobile */
+  .nav-link:hover,
+  .nav-link[style*="color"] {
+    background-color: var(--bg-secondary);
   }
 }
 
