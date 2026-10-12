@@ -187,17 +187,69 @@ img {
   color: var(--color-plum);
 }
 
+/* Healthcare Clinic Topbar */
+.clinic-topbar {
+  background-color: var(--color-plum-dark);
+  color: var(--color-ivory);
+  font-size: 0.76rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  letter-spacing: 0.02em;
+}
+
+.clinic-topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.clinic-topbar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.clinic-topbar-item strong {
+  color: #fff;
+}
+
+.clinic-topbar-badges {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  opacity: 0.9;
+}
+
+.clinic-topbar-badges span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+@media (max-width: 900px) {
+  .clinic-topbar-badges .desktop-only {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .clinic-topbar-badges {
+    display: none;
+  }
+}
+
 /* Navbar */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgba(var(--bg-primary-rgb), 0.85);
+  background-color: rgba(var(--bg-primary-rgb), 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   z-index: 1000;
   border-bottom: 1px solid var(--border-light);
-  padding: 1.25rem 0;
+  padding: 0;
   transition: all var(--transition-smooth);
 }
 
@@ -206,11 +258,14 @@ img {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  box-sizing: border-box;
 }
 
 .nav-brand {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: var(--color-plum);
   letter-spacing: -0.02em;
@@ -218,6 +273,71 @@ img {
   display: flex;
   align-items: center;
   text-decoration: none;
+}
+
+.nav-brand-sub {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-terracotta);
+}
+
+/* Healthcare Trust Strip */
+.clinic-trust-strip {
+  background-color: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-light);
+  border-top: 1px solid var(--border-light);
+  padding: 1.5rem 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.trust-strip-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.trust-strip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.trust-strip-item svg {
+  color: var(--color-plum);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.trust-strip-item strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.trust-strip-item span {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 992px) {
+  .trust-strip-inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .trust-strip-inner {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .nav-links {
@@ -230,7 +350,7 @@ img {
 .nav-actions {
   flex: 1;
   display: flex;
-  gap: 1.5rem;
+  gap: 0.85rem;
   align-items: center;
   justify-content: flex-end;
 }
@@ -249,31 +369,42 @@ img {
 }
 
 .navbar .btn {
-  padding: 0.6rem 1.5rem !important;
+  height: 42px;
+  min-height: 42px;
+  padding: 0 1.5rem !important;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 600;
+  border-radius: var(--radius-full);
   white-space: nowrap !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Hamburger Menu */
 .hamburger {
   display: none;
-  background: transparent;
-  border: none;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
   cursor: pointer;
   color: var(--text-primary);
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  transition: color var(--transition-fast);
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  box-sizing: border-box;
 }
 
 .hamburger:hover {
-  color: var(--color-terracotta);
+  color: var(--color-plum);
+  border-color: var(--color-plum);
 }
 
 @media (max-width: 900px) {
@@ -287,10 +418,10 @@ img {
   
   .nav-links {
     position: fixed;
-    top: 76px; /* Approx navbar height */
+    top: 90px; /* Navbar + Clinic Topbar height */
     inset-inline-start: 0;
     width: 100%;
-    height: calc(100vh - 76px);
+    height: calc(100vh - 90px);
     background-color: var(--bg-primary);
     flex-direction: column;
     justify-content: flex-start;
@@ -350,22 +481,48 @@ img {
   }
 }
 
-/* Theme Toggle */
+/* Theme & RTL Controls - Circular Button Containers */
 .theme-toggle {
-  background: transparent;
-  border: none;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
   cursor: pointer;
   color: var(--text-primary);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  transition: color var(--transition-fast);
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  padding: 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
+
 .theme-toggle:hover {
-  color: var(--color-terracotta);
+  color: var(--color-plum);
+  border-color: var(--color-plum);
+  background-color: var(--bg-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.theme-toggle svg {
+  display: block;
+}
+
+/* RTL Text Icon */
+.rtl-text {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-transform: uppercase;
+  user-select: none;
 }
 
 /* Auth Top Actions & Layout */
@@ -498,7 +655,588 @@ img {
 @media (max-width: 1150px) {
   .nav-links { gap: 1rem; }
   .nav-link { font-size: 0.75rem; letter-spacing: 0.05em; }
-  .navbar .btn { padding: 0.5rem 1rem !important; font-size: 0.75rem; }
-  .nav-actions { gap: 0.8rem; }
+  .navbar .btn { padding: 0 1.1rem !important; font-size: 0.75rem; height: 42px; min-height: 42px; }
+  .nav-actions { gap: 0.6rem; }
   .nav-brand { font-size: 1.2rem; }
+}
+
+/* Tablet & Mobile corner breathing room for Navbar and Topbar */
+@media (max-width: 1024px) {
+  .clinic-topbar-inner,
+  .navbar-inner {
+    padding-inline: 1.75rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .clinic-topbar-inner,
+  .navbar-inner {
+    padding-inline: 1.25rem !important;
+  }
+  .nav-actions {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .clinic-topbar-inner,
+  .navbar-inner {
+    padding-inline: 1rem !important;
+  }
+  .nav-brand svg {
+    width: 28px;
+    height: 28px;
+    margin-inline-end: 0.45rem !important;
+  }
+  .nav-brand {
+    font-size: 1.1rem;
+  }
+  .nav-brand-sub {
+    font-size: 0.58rem;
+    letter-spacing: 0.05em;
+  }
+  .nav-actions {
+    gap: 0.35rem;
+  }
+  .theme-toggle,
+  .hamburger {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
+  }
+}
+
+[data-theme="dark"] .btn-primary {
+  background-color: var(--color-plum);
+  color: #1a0f16;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  background-color: #d6a1be;
+  color: #1a0f16;
+}
+
+/* Clinical Healthcare Components & Utilities */
+.section-header-center {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.section-header-center .hero-eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-terracotta);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.section-header-center h2 {
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  color: var(--color-plum);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.section-header-center p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0 auto;
+}
+
+.section-cta-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 3.5rem;
+  text-align: center;
+}
+
+/* Conditions Grid */
+.conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .conditions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .conditions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.condition-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.condition-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-plum-light);
+}
+
+.condition-img-box {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.condition-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.condition-card:hover .condition-img {
+  transform: scale(1.05);
+}
+
+.condition-badge {
+  position: absolute;
+  top: 1rem;
+  inset-inline-start: 1rem;
+  background: rgba(43, 24, 35, 0.88);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(6px);
+}
+
+.condition-body {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.condition-body h3 {
+  font-size: 1.35rem;
+  color: var(--color-plum);
+  margin-bottom: 0.6rem;
+  font-family: var(--font-serif);
+}
+
+.condition-body p {
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.symptoms-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.symptom-tag {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.condition-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Image-Free Condition Card Variant */
+.condition-card-clean {
+  padding: 2rem;
+}
+
+.condition-clean-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.condition-clean-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  color: var(--color-plum);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-light);
+}
+
+.condition-badge-clean {
+  background: rgba(196, 123, 106, 0.12);
+  color: var(--color-terracotta);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(196, 123, 106, 0.25);
+}
+
+/* Procedural & Clinical Service Cards (Clean & Image-Free) */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 860px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+  position: relative;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-plum-light);
+}
+
+.service-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  gap: 1rem;
+}
+
+.service-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  color: var(--color-plum);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+
+.service-card-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  background: rgba(196, 123, 106, 0.12);
+  color: var(--color-terracotta);
+  border: 1px solid rgba(196, 123, 106, 0.25);
+}
+
+.service-card h3 {
+  font-size: 1.45rem;
+  color: var(--color-plum);
+  margin-bottom: 0.75rem;
+  font-family: var(--font-serif);
+  line-height: 1.25;
+}
+
+.service-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+.service-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-card-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+}
+
+.service-card-features li svg {
+  color: var(--color-terracotta);
+  flex-shrink: 0;
+}
+
+.service-card-footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Facilities Cards */
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2rem;
+}
+
+.facility-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.facility-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.facility-img-box {
+  width: 100%;
+  height: 185px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 1.35rem;
+  border: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.facility-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+  display: block;
+}
+
+.facility-card:hover .facility-img {
+  transform: scale(1.05);
+}
+
+.facility-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  color: var(--color-plum);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-light);
+}
+
+.facility-card h3 {
+  font-size: 1.25rem;
+  color: var(--color-plum);
+  margin-bottom: 0.75rem;
+  font-family: var(--font-serif);
+  line-height: 1.35;
+  min-height: 3.4rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.facility-card p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Patient Care Process Steps */
+.process-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1100px) {
+  .process-steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .process-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.process-step-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.25rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.step-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-plum);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+
+.process-step-card h3 {
+  font-size: 1.15rem;
+  color: var(--color-plum);
+  margin-bottom: 0.75rem;
+  font-family: var(--font-serif);
+}
+
+.process-step-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* FAQ Accordion */
+.faq-accordion {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.faq-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+
+.faq-card:hover {
+  border-color: var(--color-plum-light);
+}
+
+.faq-card summary {
+  padding: 1.35rem 1.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  color: var(--color-plum);
+  font-family: var(--font-serif);
+}
+
+.faq-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-card summary::after {
+  content: '+';
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--color-terracotta);
+  transition: transform var(--transition-fast);
+  margin-inline-start: 1rem;
+}
+
+.faq-card[open] summary::after {
+  content: '−';
+}
+
+.faq-content {
+  padding: 0 1.75rem 1.75rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  font-size: 0.98rem;
+  border-top: 1px solid var(--border-light);
+  padding-top: 1rem;
+}
+
+/* Equal-size Hero CTA buttons in mobile view across all pages */
+@media (max-width: 768px) {
+  .hero-actions,
+  .services-hero-cta,
+  .doctors-hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.85rem !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin-inline: auto !important;
+  }
+
+  .hero-actions .btn,
+  .services-hero-cta .btn,
+  .doctors-hero-actions .btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    padding: 0.95rem 1.5rem !important;
+  }
 }

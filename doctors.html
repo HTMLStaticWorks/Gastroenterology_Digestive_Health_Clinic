@@ -5,110 +5,611 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Doctors | Aura</title>
+  <title>Specialists & Physicians | Aura Gastroenterology & Digestive Clinic</title>
+  <meta name="description" content="Meet our board-certified gastroenterologists, hepatologists, and interventional endoscopists. World-class digestive and liver specialists dedicated to precision diagnostic care.">
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* Doctors Page Specific Styling */
     .doctors-hero {
-      padding: 160px 5% 8rem;
+      padding: 170px 5% 5rem;
       text-align: center;
-      background: linear-gradient(rgba(20, 10, 15, 0.6), rgba(20, 10, 15, 0.6)), url('assets/doctors_team_hero.jpg');
+      background: linear-gradient(180deg, rgba(30, 15, 25, 0.82) 0%, rgba(43, 24, 35, 0.92) 100%), url('assets/doctors_team_hero.jpg');
       background-size: cover;
       background-position: center;
       color: white;
-      margin-top: 70px;
-    }
-
-        .doctor-profile-reverse {
-      grid-template-columns: 2fr 1fr;
-    }
-    .doctor-profile-reverse .doctor-img-wrapper {
-      order: 2;
-    }
-    .doctor-profile-reverse .doctor-info {
-      order: 1;
-    }
-    .doctor-profile {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 4rem;
-      margin-bottom: 6rem;
-      align-items: stretch;
-    }
-
-    .doctor-img-wrapper {
       position: relative;
+    }
+
+    .doctors-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1.25rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-sand);
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .doctors-hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .doctors-hero p {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 760px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    /* Clinical KPI / Trust Bar */
+    .faculty-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: -2.5rem auto 4rem;
+      padding: 0 5%;
+      position: relative;
+      z-index: 10;
+    }
+
+    .faculty-stat-card {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
-      overflow: hidden;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .faculty-stat-card:hover {
+      transform: translateY(-3px);
       box-shadow: var(--shadow-lg);
     }
 
-    .doctor-img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    .doctor-info h2 {
-      font-size: 2.5rem;
+    .faculty-stat-val {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 600;
       color: var(--color-plum);
-      margin-bottom: 0.5rem;
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
     }
 
-    .doctor-title {
-      font-size: 1.1rem;
-      color: var(--color-terracotta);
-      font-weight: 500;
-      margin-bottom: 2rem;
+    .faculty-stat-lbl {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
-    .expertise-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin: 2rem 0;
+    /* Filter Chips Bar */
+    .filter-section {
+      text-align: center;
+      margin-bottom: 3.5rem;
     }
 
-    .expertise-tag {
+    .filter-pills {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
       background: var(--bg-secondary);
-      padding: 0.5rem 1rem;
+      padding: 0.5rem;
       border-radius: var(--radius-full);
-      font-size: 0.9rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
       color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-family: var(--font-sans);
+    }
+
+    .filter-btn:hover {
+      color: var(--color-plum);
+    }
+
+    .filter-btn.active {
+      background: var(--color-plum);
+      color: #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    [data-theme="dark"] .filter-btn.active {
+      background: var(--color-plum);
+      color: #1a0f16;
+    }
+
+    /* Doctors Showcase Grid */
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 6rem;
+    }
+
+    .doctor-card {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-plum-light);
+    }
+
+    .doctor-card-img-wrapper {
+      position: relative;
+      height: 340px;
+      overflow: hidden;
+      background: var(--bg-secondary);
+    }
+
+    .doctor-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .doctor-card:hover .doctor-card-img {
+      transform: scale(1.04);
+    }
+
+    .doctor-card-badge {
+      position: absolute;
+      top: 1rem;
+      inset-inline-start: 1rem;
+      background: rgba(43, 24, 35, 0.88);
+      color: #ffffff;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .doctor-rating-pill {
+      position: absolute;
+      bottom: 1rem;
+      inset-inline-end: 1rem;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--color-plum-dark);
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    [data-theme="dark"] .doctor-rating-pill {
+      background: rgba(30, 30, 30, 0.95);
+      color: #ffffff;
+    }
+
+    .doctor-card-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .doctor-card-header {
+      min-height: 140px;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .doctor-card-name {
+      font-size: 1.55rem;
+      color: var(--color-plum);
+      margin-bottom: 0.35rem;
+      font-family: var(--font-serif);
+      line-height: 1.2;
+      min-height: 2.2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .doctor-card-title {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--color-terracotta);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.65rem;
+      min-height: 2.4rem;
+      line-height: 1.25;
+      display: flex;
+      align-items: center;
+    }
+
+    .doctor-board-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      min-height: 32px;
+      box-sizing: border-box;
+      width: fit-content;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .doctor-card-bio {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      min-height: 120px;
+    }
+
+    .doctor-card-specialties {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      margin-top: auto;
+      margin-bottom: 1.5rem;
+      min-height: 84px;
+      box-sizing: border-box;
+    }
+
+    .specialty-tag {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-light);
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-full);
+      font-size: 0.73rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 38px;
+      box-sizing: border-box;
+      line-height: 1.2;
+      white-space: normal;
+      word-break: normal;
+    }
+
+    .doctor-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+      min-height: 44px;
+      gap: 0.5rem;
+      box-sizing: border-box;
+    }
+
+    .doctor-card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: auto;
+    }
+
+    .doctor-card-actions .btn {
+      padding: 0.65rem 1rem !important;
+      font-size: 0.8rem;
+    }
+
+    /* Modal Styling for Full Clinical Bio */
+    .doctor-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+
+    .doctor-modal-backdrop.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .doctor-modal {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      max-width: 840px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      padding: 2.5rem;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform var(--transition-smooth);
+    }
+
+    .doctor-modal-backdrop.open .doctor-modal {
+      transform: translateY(0);
+    }
+
+    .doctor-modal-close {
+      position: absolute;
+      top: 1.5rem;
+      inset-inline-end: 1.5rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      transition: all var(--transition-fast);
+    }
+
+    .doctor-modal-close:hover {
+      background: var(--color-plum);
+      color: #ffffff;
+    }
+
+    /* Medical Pillars Section */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+      align-items: stretch;
+    }
+
+    .pillar-card {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      text-align: start;
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-plum-light);
+    }
+
+    .pillar-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      background: var(--bg-secondary);
+      color: var(--color-plum);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-light);
+      flex-shrink: 0;
+    }
+
+    .pillar-card h3 {
+      color: var(--color-plum);
+      font-size: 1.35rem;
+      font-family: var(--font-serif);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      min-height: 3.5rem;
+      display: flex;
+      align-items: flex-start;
+      hyphens: none;
+      word-break: normal;
+    }
+
+    .pillar-card p {
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+      line-height: 1.7;
+      margin: 0;
+      flex: 1;
+    }
+
+    /* Clinical Referral Banner */
+    .referral-banner {
+      background: linear-gradient(135deg, var(--color-plum-dark) 0%, var(--color-plum) 100%);
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 3rem;
+      margin: 6rem auto 3rem;
+      display: grid;
+      grid-template-columns: 2fr 1.2fr;
+      gap: 3rem;
+      align-items: center;
+      box-shadow: var(--shadow-lg);
+      box-sizing: border-box;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .referral-banner h2 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      color: #ffffff;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .referral-banner p {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .referral-cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .referral-badge-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      font-size: 0.92rem;
+    }
+
+    .referral-badge-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      line-height: 1.45;
+    }
+
+    .referral-badge-item svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    @media (max-width: 992px) {
+      .faculty-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: -1.5rem;
+      }
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .pillar-card h3 {
+        min-height: auto;
+      }
+      .referral-banner {
+        grid-template-columns: 1fr;
+        padding: 2.5rem 2rem;
+      }
     }
 
     @media (max-width: 768px) {
-          .doctor-profile-reverse {
-      grid-template-columns: 2fr 1fr;
-    }
-    .doctor-profile-reverse .doctor-img-wrapper {
-      order: 2;
-    }
-    .doctor-profile-reverse .doctor-info {
-      order: 1;
-    }
-    .doctor-profile {
+      .doctors-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
-        direction: ltr !important;
-      .doctor-profile-reverse {
+        max-width: 580px;
+        margin-inline: auto;
+      }
+      .doctor-card-img-wrapper {
+        height: 420px;
+      }
+      .doctor-card-img {
+        object-position: center 22%;
+      }
+      .doctor-card-actions {
         grid-template-columns: 1fr;
       }
-      .doctor-profile-reverse .doctor-img-wrapper,
-      .doctor-profile-reverse .doctor-info {
-        order: unset;
+      .faculty-stats-grid {
+        grid-template-columns: 1fr;
       }
+      .doctor-modal {
+        padding: 1.5rem;
       }
 
-      .doctor-img-wrapper {
-        aspect-ratio: 1 / 1;
+      .referral-banner {
+        padding: 2rem 1.4rem;
+        margin: 3.5rem auto 2.5rem;
+        gap: 2rem;
+      }
+      .referral-banner h2 {
+        font-size: 1.6rem;
+      }
+      .referral-cta-group {
+        flex-direction: column;
+        gap: 0.75rem;
         width: 100%;
-        min-width: 0;
+      }
+      .referral-cta-group .btn {
+        width: 100%;
+        padding: 0.85rem 1.25rem !important;
+        font-size: 0.9rem;
+        box-sizing: border-box;
+        text-align: center;
+        justify-content: center;
+        white-space: normal;
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .doctor-card-img-wrapper {
+        height: 330px;
+      }
+      .referral-banner {
+        padding: 1.75rem 1.15rem;
+        border-radius: var(--radius-md);
+      }
+      .referral-banner h2 {
+        font-size: 1.45rem;
+      }
+      .referral-cta-group .btn {
+        font-size: 0.85rem;
+        padding: 0.8rem 1rem !important;
       }
     }
   </style>
@@ -116,14 +617,32 @@
 
 <body>
 
+  <!-- Top Navigation with Clinical Banner -->
   <nav class="navbar">
+    <div class="clinic-topbar">
+      <div class="container clinic-topbar-inner">
+        <div class="clinic-topbar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Urgent Clinical Line: <strong>(555) 782-4278</strong></span>
+        </div>
+        <div class="clinic-topbar-badges">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> ASGE &amp; AAAASF Accredited Center</span>
+          <span class="desktop-only"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Board-Certified Specialists</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Rapid Referrals Accepted</span>
+        </div>
+      </div>
+    </div>
     <div class="container navbar-inner">
       <a href="index.html" class="nav-brand">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem; flex-shrink: 0;">
           <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2" />
           <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8" />
         </svg>
-        AURA</a>
+        <div style="display: flex; flex-direction: column; line-height: 1.15;">
+          <span>AURA</span>
+          <span class="nav-brand-sub">Digestive &amp; Liver Clinic</span>
+        </div>
+      </a>
       <div class="nav-links">
         <a href="index.html" class="nav-link">Home</a>
         <a href="home2.html" class="nav-link">Home 2</a>
@@ -133,16 +652,10 @@
         <a href="dashboard.html" class="nav-link">Dashboard</a>
       </div>
       <div class="nav-actions">
-        <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle language direction" style="margin-inline-end: 0.5rem;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 3 4 7l4 4"/>
-            <path d="M4 7h16"/>
-            <path d="m16 21 4-4-4-4"/>
-            <path d="M20 17H4"/>
-          </svg>
+        <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle language direction" title="Switch language direction">
+          <span class="rtl-text">RTL</span>
         </button>
-
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"></button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
         <button id="mobile-menu-toggle" class="hamburger" aria-label="Toggle navigation">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -152,163 +665,421 @@
             <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
         </button>
-        <a href="login.html" class="btn btn-secondary">Patient Login</a>
+        <a href="login.html" class="btn btn-primary">Patient Login</a>
       </div>
     </div>
   </nav>
 
   <main>
+    <!-- Medical Faculty Hero -->
     <section class="doctors-hero">
-      <div class="container" style="max-width: 800px;">
-        <h1 class="hero-title" style="font-size: clamp(2rem, 5vw, 3.5rem); color: white;">Specialists Behind Your Digestive Health</h1>
-        <p style="font-size: 1.2rem; color: rgba(255,255,255,0.9);">Expertise that listens before it treats. Meet the
-          internationally recognized physicians leading our clinic.</p>
+      <div class="container" style="max-width: 900px;">
+        <span class="doctors-hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Academic Faculty &amp; Clinical Leadership
+        </span>
+        <h1>Specialists Behind Your Digestive &amp; Liver Health</h1>
+        <p>Our multidisciplinary team unites board-certified gastroenterologists, interventional endoscopists, transplant hepatologists, and specialized clinical dietitians to deliver unmatched diagnostic precision and patient outcomes.</p>
+        <div class="doctors-hero-actions" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <a href="contact.html" class="btn btn-primary" style="padding: 0.9rem 2.2rem;">Schedule With a Specialist</a>
+          <a href="#faculty-grid" class="btn btn-secondary" style="color: white; border-color: rgba(255,255,255,0.4); padding: 0.9rem 2.2rem;">Explore Faculty Directory</a>
+        </div>
       </div>
     </section>
 
-    <section class="section container">
-      <div class="doctor-profile">
-        <div class="doctor-img-wrapper">
-          <img src="https://images.pexels.com/photos/19596247/pexels-photo-19596247.jpeg" alt="Dr. Sarah Jenkins"
-            class="doctor-img">
-        </div>
-        <div class="doctor-info">
-          <h2>Dr. Sarah Jenkins, MD, FACG</h2>
-          <div class="doctor-title">Lead Gastroenterologist & Hepatologist</div>
-          <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
-            Dr. Jenkins brings over 15 years of specialized experience in complex gastrointestinal disorders. Her
-            approach combines rigorous diagnostic precision with a deeply empathetic patient manner. She trained at
-            Johns Hopkins and is recognized globally for her research in advanced therapeutics.
-          </p>
-          <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
-            In addition to her clinical work, Dr. Jenkins serves on the advisory board of the American College of
-            Gastroenterology, helping draft national guidelines for colon cancer screening. She is deeply passionate
-            about women's digestive health and regularly hosts community wellness seminars.
-          </p>
-          <h3 style="font-size: 1.2rem; margin-top: 2rem;">Education & Fellowships</h3>
-          <ul
-            style="color: var(--text-secondary); list-style-type: disc; padding-inline-start: 1.5rem; margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6; text-align: left; list-style-position: outside;">
-            <li>MD, Stanford University School of Medicine</li>
-            <li>Residency in Internal Medicine, UCSF</li>
-            <li>Fellowship in Gastroenterology & Hepatology, Johns Hopkins Hospital</li>
-          </ul>
-          <h3 style="font-size: 1.2rem; margin-top: 2rem;">Areas of Expertise</h3>
-          <div class="expertise-list">
-            <span class="expertise-tag">Advanced Endoscopy</span>
-            <span class="expertise-tag">Inflammatory Bowel Disease</span>
-            <span class="expertise-tag">Hepatology</span>
-            <span class="expertise-tag">Preventative Care</span>
-          </div>
-          <div style="margin-top: 3rem;">
-            <a href="contact.html" class="btn btn-primary">Book Appointment with Dr. Jenkins</a>
-          </div>
+    <!-- Faculty Key Benchmarks -->
+    <div class="faculty-stats-grid">
+      <div class="faculty-stat-card">
+        <div class="faculty-stat-val">100%</div>
+        <div class="faculty-stat-lbl">Board-Certified Specialists</div>
+      </div>
+      <div class="faculty-stat-card">
+        <div class="faculty-stat-val">15k+</div>
+        <div class="faculty-stat-lbl">Endoscopic Procedures</div>
+      </div>
+      <div class="faculty-stat-card">
+        <div class="faculty-stat-val">4.9 / 5</div>
+        <div class="faculty-stat-lbl">Verified Patient Rating</div>
+      </div>
+      <div class="faculty-stat-card">
+        <div class="faculty-stat-val">&lt; 48 hrs</div>
+        <div class="faculty-stat-lbl">Urgent Access Guarantee</div>
+      </div>
+    </div>
+
+    <!-- Main Faculty Directory Section -->
+    <section class="container section" id="faculty-grid" style="padding-top: 1rem;">
+      <div class="text-center" style="max-width: 700px; margin: 0 auto 2.5rem; text-align: center;">
+        <span class="hero-eyebrow">Distinguished Care Team</span>
+        <h2 style="font-size: 2.6rem; color: var(--color-plum); margin-bottom: 1rem;">Meet Our Physicians &amp; Specialists</h2>
+        <p style="color: var(--text-secondary); font-size: 1.05rem;">Filter by clinical subspecialty to find the dedicated physician suited to your diagnostic symptoms and medical history.</p>
+      </div>
+
+      <!-- Specialty Filter Pills -->
+      <div class="filter-section">
+        <div class="filter-pills" role="tablist">
+          <button class="filter-btn active" onclick="filterDoctors('all')" data-filter="all">All Specialists (6)</button>
+          <button class="filter-btn" onclick="filterDoctors('hepatology')" data-filter="hepatology">Hepatology &amp; Liver</button>
+          <button class="filter-btn" onclick="filterDoctors('endoscopy')" data-filter="endoscopy">Interventional Endoscopy</button>
+          <button class="filter-btn" onclick="filterDoctors('ibd')" data-filter="ibd">IBD &amp; Colitis</button>
+          <button class="filter-btn" onclick="filterDoctors('screening')" data-filter="screening">Colon Screening &amp; GERD</button>
+          <button class="filter-btn" onclick="filterDoctors('motility')" data-filter="motility">Motility &amp; Nutrition</button>
         </div>
       </div>
 
-      <hr style="border: 0; border-top: 1px solid var(--border-light); margin: 6rem 0;">
+      <!-- Doctors Showcase Grid -->
+      <div class="doctors-grid">
 
-      <div class="doctor-profile doctor-profile-reverse">
-        <div class="doctor-img-wrapper">
-          <img src="https://images.pexels.com/photos/26336880/pexels-photo-26336880.jpeg" alt="Dr. Alan Turing"
-            class="doctor-img">
-        </div>
-        <div class="doctor-info">
-          <h2>Dr. Alan Turing, MD, PhD</h2>
-          <div class="doctor-title">Director of Endoscopy</div>
-          <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
-            As the Director of Endoscopy, Dr. Turing specializes in minimally invasive diagnostic and therapeutic
-            procedures. His dual MD/PhD background means his clinical practice is informed by the absolute cutting edge
-            of biomedical research.
-          </p>
-          <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
-            Before joining Aura, Dr. Turing led several pioneering clinical trials focusing on endoscopic ultrasound
-            (EUS) and ERCP techniques at the Mayo Clinic. He is a frequent keynote speaker at international
-            gastroenterology symposiums and has published over 50 peer-reviewed articles.
-          </p>
-          <h3 style="font-size: 1.2rem; margin-top: 2rem;">Education & Fellowships</h3>
-          <ul
-            style="color: var(--text-secondary); list-style-type: disc; padding-inline-start: 1.5rem; margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6; text-align: left; list-style-position: outside;">
-            <li>MD, Harvard Medical School</li>
-            <li>PhD in Biomedical Engineering, MIT</li>
-            <li>Residency in Internal Medicine, Massachusetts General Hospital</li>
-            <li>Fellowship in Advanced Therapeutic Endoscopy, Mayo Clinic</li>
-          </ul>
-          <h3 style="font-size: 1.2rem; margin-top: 2rem;">Areas of Expertise</h3>
-          <div class="expertise-list">
-            <span class="expertise-tag">Therapeutic Endoscopy</span>
-            <span class="expertise-tag">Pancreaticobiliary Disorders</span>
-            <span class="expertise-tag">GI Oncology</span>
-            <span class="expertise-tag">Motility Studies</span>
+        <!-- Doctor 1: Dr. Sarah Jenkins -->
+        <article class="doctor-card" data-category="hepatology">
+          <div class="doctor-card-img-wrapper">
+            <img src="https://images.pexels.com/photos/19596247/pexels-photo-19596247.jpeg" alt="Dr. Sarah Jenkins, MD, FACG" class="doctor-card-img">
+            <span class="doctor-card-badge">Medical Director</span>
+            <div class="doctor-rating-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#c47b6a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.98 (240+ reviews)</span>
+            </div>
           </div>
-          <div style="margin-top: 3rem;">
-            <a href="contact.html" class="btn btn-secondary">Book Appointment with Dr. Turing</a>
+          <div class="doctor-card-body">
+            <div class="doctor-card-header">
+              <h3 class="doctor-card-name">Dr. Sarah Jenkins, MD, FACG</h3>
+              <div class="doctor-card-title">Lead Gastroenterologist &amp; Hepatologist</div>
+              <div class="doctor-board-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Board-Certified: GI &amp; Transplant Hepatology
+              </div>
+            </div>
+            <p class="doctor-card-bio">
+              With 16+ years of clinical leadership, Dr. Jenkins specializes in autoimmune liver diseases, metabolic dysfunction-associated steatohepatitis (MASH), and complex biliary diagnostics. Advisory board member for the American College of Gastroenterology.
+            </p>
+            <div class="doctor-card-specialties">
+              <span class="specialty-tag">Fatty Liver Disease</span>
+              <span class="specialty-tag">Cirrhosis Management</span>
+              <span class="specialty-tag">FibroScan Diagnostics</span>
+              <span class="specialty-tag">Screening Colonoscopy</span>
+            </div>
+            <div class="doctor-meta-row">
+              <span><strong>Training:</strong> Johns Hopkins &amp; Stanford</span>
+              <span><strong>Languages:</strong> English, Spanish</span>
+            </div>
+            <div class="doctor-card-actions">
+              <button class="btn btn-secondary" onclick="openBioModal('jenkins')">View Full Bio</button>
+              <a href="contact.html?doctor=jenkins" class="btn btn-primary">Book Consultation</a>
+            </div>
           </div>
-        </div>
+        </article>
+
+        <!-- Doctor 2: Dr. Alan Turing -->
+        <article class="doctor-card" data-category="endoscopy">
+          <div class="doctor-card-img-wrapper">
+            <img src="https://images.pexels.com/photos/26336880/pexels-photo-26336880.jpeg" alt="Dr. Alan Turing, MD, PhD" class="doctor-card-img">
+            <span class="doctor-card-badge">Head of Endoscopy</span>
+            <div class="doctor-rating-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#c47b6a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.96 (190+ reviews)</span>
+            </div>
+          </div>
+          <div class="doctor-card-body">
+            <div class="doctor-card-header">
+              <h3 class="doctor-card-name">Dr. Alan Turing, MD, PhD</h3>
+              <div class="doctor-card-title">Director of Interventional Endoscopy</div>
+              <div class="doctor-board-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Board-Certified: Internal Medicine &amp; GI
+              </div>
+            </div>
+            <p class="doctor-card-bio">
+              Pioneering interventional gastroenterologist dedicated to minimally invasive optical procedures. Specializes in therapeutic endoscopic ultrasound (EUS), complex ERCP, mucosal resection of high-risk polyps, and endoscopic treatment of GERD.
+            </p>
+            <div class="doctor-card-specialties">
+              <span class="specialty-tag">Therapeutic EUS &amp; ERCP</span>
+              <span class="specialty-tag">Complex Polypectomy</span>
+              <span class="specialty-tag">Barrett's Esophagus</span>
+              <span class="specialty-tag">GI Oncology</span>
+            </div>
+            <div class="doctor-meta-row">
+              <span><strong>Training:</strong> Harvard &amp; Mayo Clinic</span>
+              <span><strong>Languages:</strong> English, French</span>
+            </div>
+            <div class="doctor-card-actions">
+              <button class="btn btn-secondary" onclick="openBioModal('turing')">View Full Bio</button>
+              <a href="contact.html?doctor=turing" class="btn btn-primary">Book Consultation</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doctor 3: Dr. Elena Rostova -->
+        <article class="doctor-card" data-category="ibd">
+          <div class="doctor-card-img-wrapper">
+            <img src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg" alt="Dr. Elena Rostova, MD" class="doctor-card-img">
+            <span class="doctor-card-badge">IBD Center Director</span>
+            <div class="doctor-rating-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#c47b6a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.99 (310+ reviews)</span>
+            </div>
+          </div>
+          <div class="doctor-card-body">
+            <div class="doctor-card-header">
+              <h3 class="doctor-card-name">Dr. Elena Rostova, MD</h3>
+              <div class="doctor-card-title">Director of Inflammatory Bowel Disease</div>
+              <div class="doctor-board-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Board-Certified: Gastroenterology
+              </div>
+            </div>
+            <p class="doctor-card-bio">
+              Internationally recognized for her patient-centered approach to Crohn's disease and Ulcerative Colitis. Dr. Rostova orchestrates advanced biologic regimens, JAK inhibitor therapy, mucosal healing monitoring, and preventative dysplasia surveillance.
+            </p>
+            <div class="doctor-card-specialties">
+              <span class="specialty-tag">Crohn's Disease</span>
+              <span class="specialty-tag">Ulcerative Colitis</span>
+              <span class="specialty-tag">Biologic Therapeutics</span>
+              <span class="specialty-tag">Microscopic Colitis</span>
+            </div>
+            <div class="doctor-meta-row">
+              <span><strong>Training:</strong> Columbia &amp; Mount Sinai</span>
+              <span><strong>Languages:</strong> English, Russian</span>
+            </div>
+            <div class="doctor-card-actions">
+              <button class="btn btn-secondary" onclick="openBioModal('rostova')">View Full Bio</button>
+              <a href="contact.html?doctor=rostova" class="btn btn-primary">Book Consultation</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doctor 4: Dr. Marcus Vance -->
+        <article class="doctor-card" data-category="screening">
+          <div class="doctor-card-img-wrapper">
+            <img src="https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg" alt="Dr. Marcus Vance, MD, MPH" class="doctor-card-img">
+            <span class="doctor-card-badge">Preventative GI</span>
+            <div class="doctor-rating-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#c47b6a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.94 (175+ reviews)</span>
+            </div>
+          </div>
+          <div class="doctor-card-body">
+            <div class="doctor-card-header">
+              <h3 class="doctor-card-name">Dr. Marcus Vance, MD, MPH</h3>
+              <div class="doctor-card-title">Senior Consultant &amp; Screening Specialist</div>
+              <div class="doctor-board-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Board-Certified: Internal Medicine &amp; GI
+              </div>
+            </div>
+            <p class="doctor-card-bio">
+              Leader in high-definition preventative colonoscopy, artificial intelligence polyp detection (GI Genius), and hereditary colorectal cancer genetics. Devoted to painless, comfortable screenings and early detection strategies.
+            </p>
+            <div class="doctor-card-specialties">
+              <span class="specialty-tag">Colon Cancer Screening</span>
+              <span class="specialty-tag">AI-Assisted Colonoscopy</span>
+              <span class="specialty-tag">GERD &amp; Acid Reflux</span>
+              <span class="specialty-tag">Hereditary Polyposis</span>
+            </div>
+            <div class="doctor-meta-row">
+              <span><strong>Training:</strong> Yale &amp; UCLA Medical Center</span>
+              <span><strong>Languages:</strong> English, German</span>
+            </div>
+            <div class="doctor-card-actions">
+              <button class="btn btn-secondary" onclick="openBioModal('vance')">View Full Bio</button>
+              <a href="contact.html?doctor=vance" class="btn btn-primary">Book Consultation</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doctor 5: Dr. Maya Patel -->
+        <article class="doctor-card" data-category="motility">
+          <div class="doctor-card-img-wrapper">
+            <img src="https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg" alt="Dr. Maya Patel, MD, MS" class="doctor-card-img">
+            <span class="doctor-card-badge">Neuro-Gastroenterology</span>
+            <div class="doctor-rating-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#c47b6a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.97 (220+ reviews)</span>
+            </div>
+          </div>
+          <div class="doctor-card-body">
+            <div class="doctor-card-header">
+              <h3 class="doctor-card-name">Dr. Maya Patel, MD, MS</h3>
+              <div class="doctor-card-title">Specialist in GI Motility &amp; Gut-Brain Axis</div>
+              <div class="doctor-board-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Board-Certified: Gastroenterology
+              </div>
+            </div>
+            <p class="doctor-card-bio">
+              Specializing in functional bowel disorders, gastroparesis, refractory IBS, and esophageal motility disorders. Expert in high-resolution esophageal manometry, wireless motility capsule studies, and targeted neuromodulation therapy.
+            </p>
+            <div class="doctor-card-specialties">
+              <span class="specialty-tag">Irritable Bowel Syndrome</span>
+              <span class="specialty-tag">SIBO Management</span>
+              <span class="specialty-tag">Esophageal Manometry</span>
+              <span class="specialty-tag">Gastroparesis Care</span>
+            </div>
+            <div class="doctor-meta-row">
+              <span><strong>Training:</strong> Northwestern &amp; Brigham and Women's</span>
+              <span><strong>Languages:</strong> English, Hindi, Gujarati</span>
+            </div>
+            <div class="doctor-card-actions">
+              <button class="btn btn-secondary" onclick="openBioModal('patel')">View Full Bio</button>
+              <a href="contact.html?doctor=patel" class="btn btn-primary">Book Consultation</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Clinician 6: Elena Zhao -->
+        <article class="doctor-card" data-category="motility">
+          <div class="doctor-card-img-wrapper">
+            <img src="https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg" alt="Elena Zhao, MS, RD, CNSC" class="doctor-card-img">
+            <span class="doctor-card-badge">Clinical Nutrition</span>
+            <div class="doctor-rating-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#c47b6a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.99 (160+ reviews)</span>
+            </div>
+          </div>
+          <div class="doctor-card-body">
+            <div class="doctor-card-header">
+              <h3 class="doctor-card-name">Elena Zhao, MS, RD, CNSC</h3>
+              <div class="doctor-card-title">Lead GI Clinical Dietitian &amp; Nutritionist</div>
+              <div class="doctor-board-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Certified Nutrition Support Clinician (CNSC)
+              </div>
+            </div>
+            <p class="doctor-card-bio">
+              Dedicated to medical nutrition therapy for complex GI disorders. Formulates bio-individualized dietary programs for celiac disease, short bowel syndrome, eosinophilic esophagitis (EoE), and Monash-certified low-FODMAP protocols.
+            </p>
+            <div class="doctor-card-specialties">
+              <span class="specialty-tag">Microbiome Architecture</span>
+              <span class="specialty-tag">Low-FODMAP Protocol</span>
+              <span class="specialty-tag">Celiac Nutrition</span>
+              <span class="specialty-tag">Anti-Inflammatory Diets</span>
+            </div>
+            <div class="doctor-meta-row">
+              <span><strong>Training:</strong> Cornell University &amp; UCSF</span>
+              <span><strong>Languages:</strong> English, Mandarin</span>
+            </div>
+            <div class="doctor-card-actions">
+              <button class="btn btn-secondary" onclick="openBioModal('zhao')">View Full Bio</button>
+              <a href="contact.html?doctor=zhao" class="btn btn-primary">Book Consultation</a>
+            </div>
+          </div>
+        </article>
+
       </div>
-
     </section>
 
+    <!-- Clinical Standards & Care Pillars Section -->
     <section class="section" style="background-color: var(--bg-secondary);">
-      <div class="container" style="text-align: center; max-width: 800px;">
-        <h2 style="font-size: 2.5rem; color: var(--color-plum); margin-bottom: 1.5rem;">A Multidisciplinary Approach
-        </h2>
-        <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 3rem;">
-          Our leading gastroenterologists don't work in isolation. At Aura, your care is managed by a multidisciplinary
-          board of experts including registered dietitians, GI psychologists, and specialized nursing staff, ensuring
-          every aspect of your digestive health is supported.
-        </p>
-        <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
-          <div
-            style="background: var(--bg-primary); padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); flex: 1; min-width: 200px;">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
-              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
-            </svg>
-            <h3 style="color: var(--color-plum); margin-bottom: 0.5rem; font-size: 1.2rem;">Clinical Dietetics</h3>
-            <p style="font-size: 0.9rem; color: var(--text-secondary);">Evidence-based nutritional architecture tailored
-              to your unique microbiome.</p>
+      <div class="container" style="max-width: 1200px; margin: 0 auto;">
+        <div style="max-width: 760px; margin: 0 auto 3.5rem; text-align: center;">
+          <span class="hero-eyebrow">The Aura Clinical Standard</span>
+          <h2 style="font-size: 2.6rem; color: var(--color-plum); margin-bottom: 1.25rem;">Why Leading Physicians &amp; Patients Choose Us</h2>
+          <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;">Our medical practice was constructed from the ground up to eliminate the hurried, fragmented nature of standard healthcare. Every patient receives attentive, multidisciplinary specialist consultation.</p>
+        </div>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>Unhurried 45-Minute Consultations</h3>
+            <p>We allocate extended visit times to thoroughly examine your comprehensive medical history, symptom logs, and lifestyle markers.</p>
           </div>
-          <div
-            style="background: var(--bg-primary); padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); flex: 1; min-width: 200px;">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
-              <path d="M2 12h4l3-9 5 18 3-9h5" />
-            </svg>
-            <h3 style="color: var(--color-plum); margin-bottom: 0.5rem; font-size: 1.2rem;">GI Psychology</h3>
-            <p style="font-size: 0.9rem; color: var(--text-secondary);">Addressing the gut-brain axis with specialized
-              therapies to reduce symptoms.</p>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Multidisciplinary Case Board</h3>
+            <p>Complex gastrointestinal and liver conditions are reviewed collaboratively between gastroenterologists, surgeons, and dietitians.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3>Direct Portal Doctor Access</h3>
+            <p>Patients communicate securely through our dedicated digital portal for test results, prescription renewals, and procedure prep questions.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" style="background: var(--color-plum); color: white; text-align: center;">
-      <div class="container" style="max-width: 800px;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; font-family: var(--font-serif); font-style: italic;">
-          "Expertise that listens before it treats."</h2>
-        <p style="font-size: 1.1rem; opacity: 0.9; line-height: 1.8;">We believe that the best clinical outcomes begin
-          with a deep, holistic understanding of the patient. Our specialists dedicate the time required to understand
-          your unique physiological and lifestyle factors before designing a care protocol.</p>
+    <!-- Physician Direct Referral Section -->
+    <section class="container" style="overflow-x: hidden;">
+      <div class="referral-banner">
+        <div>
+          <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-terracotta);">For Referring Physicians</span>
+          <h2>Direct Clinical Referrals &amp; Same-Week Consultations</h2>
+          <p>We work in close partnership with internists, family physicians, and specialists across the region. When you refer a patient to Aura, you receive prompt procedural notes, biopsy pathology reports within 48 hours, and shared clinical follow-up.</p>
+          <div class="referral-cta-group">
+            <a href="contact.html?referral=true" class="btn btn-primary" style="background: #ffffff; color: var(--color-plum-dark); font-weight: 600;">Submit Online Physician Referral</a>
+            <a href="tel:5557824278" class="btn btn-secondary" style="border-color: rgba(255,255,255,0.4); color: #ffffff;">Call Referral Triage: (555) 782-4278</a>
+          </div>
+        </div>
+        <div class="referral-badge-list">
+          <div class="referral-badge-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Priority access for acute GI bleeding &amp; severe anemia</span>
+          </div>
+          <div class="referral-badge-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Same-week screening &amp; diagnostic endoscopy slots</span>
+          </div>
+          <div class="referral-badge-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Comprehensive pathology reports transmitted electronically</span>
+          </div>
+          <div class="referral-badge-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>HIPAA-compliant direct provider communication</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule Appointment Strip -->
+    <section class="section container" style="text-align: center; padding-top: 2rem;">
+      <h2 style="font-size: 2.8rem; color: var(--color-plum); margin-bottom: 1.25rem;">Experience Specialized Digestive Medicine</h2>
+      <p style="font-size: 1.15rem; color: var(--text-secondary); max-width: 650px; margin: 0 auto 2.5rem;">
+        Take the decisive step toward lasting digestive wellness. Consult with our leading medical faculty in our private, tranquil clinic setting.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+        <a href="contact.html" class="btn btn-primary" style="padding: 1.1rem 2.8rem; font-size: 1rem;">Book New Patient Appointment</a>
+        <a href="services.html" class="btn btn-secondary" style="padding: 1.1rem 2.8rem; font-size: 1rem;">Explore All Procedures</a>
       </div>
     </section>
   </main>
 
+  <!-- Interactive Doctor Bio Modal -->
+  <div class="doctor-modal-backdrop" id="bioModalBackdrop" onclick="closeBioModal(event)">
+    <div class="doctor-modal" id="bioModalContent" onclick="event.stopPropagation()">
+      <button class="doctor-modal-close" onclick="closeBioModal()" aria-label="Close bio modal">&times;</button>
+      <div id="modalBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-grid">
       <div>
         <div class="nav-brand" style="color: var(--color-sand); margin-bottom: 1rem;">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem; flex-shrink: 0;">
             <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2" />
             <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8" />
           </svg>
-          AURA
+          <div style="display: flex; flex-direction: column; line-height: 1.15;">
+            <span>AURA</span>
+            <span class="nav-brand-sub" style="color: rgba(255,255,255,0.7);">Digestive &amp; Liver Clinic</span>
+          </div>
         </div>
         <p style="color: rgba(255,255,255,0.7); max-width: 300px; margin-bottom: 2rem;">A sophisticated private
-          gastroenterology practice combining advanced digestive medicine with a premium patient experience.</p>
+          gastroenterology practice combining advanced digestive medicine with an accredited, patient-first clinical environment.</p>
         <div style="color: rgba(255,255,255,0.7);">
-          <p><strong>Contact</strong></p>
+          <p><strong>Clinical Contact</strong></p>
           <p>+1 (800) 555-0199</p>
-          <p>concierge@auradigestive.com</p>
+          <p>clinic@auradigestive.com</p>
           <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
             <a href="#" aria-label="Instagram" class="social-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -326,61 +1097,265 @@
                 <circle cx="4" cy="4" r="2"></circle>
               </svg>
             </a>
-            <a href="#" aria-label="Twitter" class="social-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
-                <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
-              </svg>
-            </a>
           </div>
         </div>
       </div>
       <div>
-        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Services</h4>
+        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Clinical Specialties</h4>
         <ul
           style="color: rgba(255,255,255,0.7); display: flex; flex-direction: column; gap: 0.8rem; list-style: none; padding: 0;">
-          <li><a href="services.html" class="footer-link">Endoscopy</a></li>
-          <li><a href="services.html" class="footer-link">Colonoscopy</a></li>
-          <li><a href="services.html" class="footer-link">IBS Management</a></li>
-          <li><a href="services.html" class="footer-link">Consultations</a></li>
+          <li><a href="services.html" class="footer-link">Advanced Endoscopy (EGD)</a></li>
+          <li><a href="services.html" class="footer-link">Screening Colonoscopy</a></li>
+          <li><a href="services.html" class="footer-link">Inflammatory Bowel Disease (IBD)</a></li>
+          <li><a href="services.html" class="footer-link">Hepatology &amp; Liver Clinic</a></li>
+          <li><a href="services.html" class="footer-link">GI Motility &amp; SIBO</a></li>
         </ul>
       </div>
       <div>
-        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Clinic</h4>
+        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Clinic Practice</h4>
         <ul
           style="color: rgba(255,255,255,0.7); display: flex; flex-direction: column; gap: 0.8rem; list-style: none; padding: 0;">
-          <li><a href="index.html" class="footer-link">Home</a></li>
-          <li><a href="doctors.html" class="footer-link">Our Specialists</a></li>
-          <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+          <li><a href="index.html" class="footer-link">About Aura Clinic</a></li>
+          <li><a href="doctors.html" class="footer-link">Medical Faculty</a></li>
+          <li><a href="contact.html" class="footer-link">Refer a Patient</a></li>
+          <li><a href="contact.html" class="footer-link">Book Appointment</a></li>
         </ul>
       </div>
       <div>
-        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Visit</h4>
+        <h4 style="color: var(--color-sand); margin-bottom: 1.5rem;">Accredited Facility</h4>
         <div style="color: rgba(255,255,255,0.7); line-height: 1.6;">
-          <p>1200 Wellness Boulevard<br>Suite 400<br>Beverly Hills, CA 90210</p>
-          <p style="margin-top: 1rem;"><strong>Hours</strong></p>
-          <p>Mon-Fri: 8am - 6pm</p>
+          <p>1200 Healthcare Boulevard<br>Suite 400 - Endoscopy Wing<br>Beverly Hills, CA 90210</p>
+          <p style="margin-top: 1rem;"><strong>Clinical Hours</strong></p>
+          <p>Mon - Fri: 7:30am - 5:30pm<br>Saturday: By Appointment</p>
         </div>
       </div>
     </div>
     <div class="container"
       style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 4rem; padding-top: 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); gap: 1rem;">
-      <div>&copy; 2026 Aura. All rights reserved.</div>
+      <div>&copy; 2026 Aura Gastroenterology &amp; Digestive Health Clinic. All rights reserved. AAAASF &amp; ASGE Accredited Outpatient Facility.</div>
       <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-        <a href="#" class="footer-link">Privacy Policy</a>
-        <a href="#" class="footer-link">Terms of Service</a>
+        <a href="#" class="footer-link">Patient Privacy (HIPAA)</a>
+        <a href="#" class="footer-link">Notice of Non-Discrimination</a>
         <a href="login.html" style="color: var(--color-terracotta); text-decoration: none;">Patient Portal Login</a>
       </div>
     </div>
   </footer>
+
   <button id="back-to-top" class="back-to-top" aria-label="Back to top">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
       stroke-linecap="round" stroke-linejoin="round">
       <path d="m18 15-6-6-6 6" />
     </svg>
   </button>
+
   <script src="app.js"></script>
+
+  <!-- Doctors Filter and Bio Modal Script -->
+  <script>
+    // Detailed Doctor Data Store
+    const doctorBios = {
+      jenkins: {
+        name: "Dr. Sarah Jenkins, MD, FACG",
+        title: "Medical Director & Lead Hepatologist",
+        image: "https://images.pexels.com/photos/19596247/pexels-photo-19596247.jpeg",
+        certifications: ["American Board of Internal Medicine: Gastroenterology", "American Board of Internal Medicine: Transplant Hepatology", "Fellow, American College of Gastroenterology (FACG)"],
+        education: [
+          "MD, Stanford University School of Medicine (Alpha Omega Alpha Honor Society)",
+          "Residency in Internal Medicine, University of California, San Francisco (UCSF)",
+          "Fellowship in Gastroenterology & Transplant Hepatology, Johns Hopkins Hospital"
+        ],
+        affiliations: ["Cedars-Sinai Medical Center - Attending Staff", "UCLA David Geffen School of Medicine - Clinical Assistant Professor", "ASGE Quality Assurance Taskforce"],
+        summary: "Dr. Jenkins brings 16+ years of clinical expertise focusing on early liver fibrosis, metabolic dysfunction-associated steatotic liver disease (MASLD/MASH), autoimmune hepatitis, and advanced liver disease management. As Medical Director of Aura, she oversees clinical quality, accreditation protocols, and integrated diagnostic pathways.",
+        publications: [
+          "Non-invasive biomarker surveillance in MASH progression, Hepatology Journal (2023)",
+          "National screening standards for early colorectal polyposis in women, American Journal of Gastroenterology (2021)"
+        ],
+        specialties: ["Metabolic Dysfunction Liver Disease (MASH/NASH)", "Autoimmune Hepatitis & PBC", "FibroScan Elastography", "Colon Cancer Screening & Prevention"]
+      },
+      turing: {
+        name: "Dr. Alan Turing, MD, PhD",
+        title: "Director of Interventional & Therapeutic Endoscopy",
+        image: "https://images.pexels.com/photos/26336880/pexels-photo-26336880.jpeg",
+        certifications: ["American Board of Internal Medicine: Gastroenterology", "ASGE Master Endoscopist Recognition Award", "Certified in Advanced Therapeutic ERCP & EUS"],
+        education: [
+          "MD, Harvard Medical School (Magna Cum Laude)",
+          "PhD in Biomedical Optics & Bioengineering, Massachusetts Institute of Technology (MIT)",
+          "Residency in Internal Medicine, Massachusetts General Hospital (MGH)",
+          "Advanced Therapeutic Endoscopy Fellowship, Mayo Clinic Rochester"
+        ],
+        affiliations: ["American Society for Gastrointestinal Endoscopy (ASGE) Technology Committee", "Stanford Health Care - Consulting Interventional GI", "Director, Aura Endoscopy & Diagnostic Imaging Suite"],
+        summary: "Dr. Turing is a national authority in therapeutic endoscopy, interventional endoscopic ultrasound (EUS), complex ERCP biliary stenting, and endoscopic mucosal resection (EMR). His engineering background has driven novel optical imaging techniques for detecting micro-dysplasia in Barrett's esophagus.",
+        publications: [
+          "Comparative efficacy of radiofrequency ablation vs cryoballoon for Barrett's esophagus, Gastrointestinal Endoscopy (2024)",
+          "Deep learning algorithmic assistance in real-time adenoma detection during optical colonoscopy, The Lancet Gastroenterology (2022)"
+        ],
+        specialties: ["Therapeutic Endoscopic Ultrasound (EUS)", "Complex Biliary & Pancreatic ERCP", "Endoscopic Mucosal Resection (EMR)", "Barrett's Esophagus Ablation & Stenting"]
+      },
+      rostova: {
+        name: "Dr. Elena Rostova, MD",
+        title: "Director of Inflammatory Bowel Disease (IBD)",
+        image: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg",
+        certifications: ["American Board of Internal Medicine: Gastroenterology", "Crohn's & Colitis Foundation Clinical Fellow", "European Crohn's and Colitis Organisation (ECCO)"],
+        education: [
+          "MD, Columbia University Vagelos College of Physicians and Surgeons",
+          "Residency in Internal Medicine, NewYork-Presbyterian Hospital",
+          "Advanced IBD Fellowship, Mount Sinai Hospital Susan and Leonard Feinstein IBD Center"
+        ],
+        affiliations: ["National Advisory Board, Crohn's & Colitis Foundation", "Director of Mucosal Healing Clinical Trials, Aura Research", "Attending Staff Gastroenterology, Ronald Reagan UCLA Medical Center"],
+        summary: "Dr. Rostova specializes in precision biologic therapy, intestinal ultrasound for non-invasive IBD activity monitoring, and proactive mucosal healing strategies. She believes in treating the whole person, partnering with GI psychologists and nutritionists to achieve long-lasting remission.",
+        publications: [
+          "Targeted dual-biologic strategies in refractory Crohn's disease, Journal of Crohn's and Colitis (2023)",
+          "Intestinal ultrasound as a point-of-care metric in Ulcerative Colitis, Gut Journal (2022)"
+        ],
+        specialties: ["Crohn's Disease Optimization", "Ulcerative Colitis & Pouchitis", "Biologic & JAK Inhibitor Protocols", "Intestinal Ultrasound Monitoring"]
+      },
+      vance: {
+        name: "Dr. Marcus Vance, MD, MPH",
+        title: "Senior Consultant & Screening Specialist",
+        image: "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg",
+        certifications: ["American Board of Internal Medicine: Gastroenterology", "Master of Public Health (Epidemiology)", "American College of Physicians Fellow"],
+        education: [
+          "MD & MPH, Yale School of Medicine",
+          "Residency in Internal Medicine, Brigham and Women's Hospital",
+          "Fellowship in Gastroenterology & Preventative Oncology, UCLA Health"
+        ],
+        affiliations: ["American Gastroenterological Association (AGA) Preventative Taskforce", "Southern California GI Society Executive Committee", "Director of Hereditary Cancer Screening, Aura"],
+        summary: "Dr. Vance is recognized for maintaining exceptional adenoma detection rates (ADR &gt; 48%), significantly exceeding national safety benchmarks. His clinical practice champions gentle, painless colonoscopies with carbon dioxide insufflation and AI computer-aided polyp analysis.",
+        publications: [
+          "Optimizing bowel preparation tolerability and mucosal visualization in screening populations, Endoscopy (2023)",
+          "Genetic screening indicators for familial polyposis, New England Journal of Medicine Review (2021)"
+        ],
+        specialties: ["High-Definition Screening Colonoscopy", "Painless CO2 Insufflation Technique", "Hereditary Colon Cancer Genetics", "Chronic Acid Reflux & Hiatal Hernia"]
+      },
+      patel: {
+        name: "Dr. Maya Patel, MD, MS",
+        title: "Specialist in Neuro-Gastroenterology & Motility",
+        image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg",
+        certifications: ["American Board of Internal Medicine: Gastroenterology", "American Neurogastroenterology and Motility Society (ANMS) Fellow"],
+        education: [
+          "MD, Northwestern University Feinberg School of Medicine",
+          "Master of Science in Clinical Investigation, Northwestern Graduate School",
+          "Fellowship in Gastroenterology & Motility, Brigham and Women's Hospital / Harvard Medical School"
+        ],
+        affiliations: ["International Foundation for Gastrointestinal Disorders (IFFGD) Scientific Advisory Board", "ANMS Clinical Guidelines Council", "Lead Investigator, Aura Gut-Brain Clinic"],
+        summary: "Dr. Patel treats refractory functional gastrointestinal disorders, visceral hypersensitivity, achalasia, and chronic constipation. She utilizes high-resolution manometry, SmartPill motility transit monitoring, and gut-directed hypnotherapy integration.",
+        publications: [
+          "Neuromodulation efficacy in refractory visceral hypersensitivity, Gastroenterology (2023)",
+          "High-resolution esophageal manometry classification standards, Neurogastroenterology & Motility (2022)"
+        ],
+        specialties: ["Severe Irritable Bowel Syndrome (IBS)", "Small Intestinal Bacterial Overgrowth (SIBO)", "High-Resolution Esophageal Manometry", "Gastroparesis & Dysmotility"]
+      },
+      zhao: {
+        name: "Elena Zhao, MS, RD, CNSC",
+        title: "Lead GI Clinical Dietitian & Nutritionist",
+        image: "https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg",
+        certifications: ["Certified Nutrition Support Clinician (CNSC)", "Monash University Certified Low-FODMAP Specialist", "Registered Dietitian (Commission on Dietetic Registration)"],
+        education: [
+          "BS in Nutritional Biochemistry, University of California, Berkeley",
+          "MS in Clinical Nutrition & Metabolism, Cornell University",
+          "Dietetic Clinical Residency, UCSF Health Department of Nutrition"
+        ],
+        affiliations: ["Academy of Nutrition and Dietetics - Dietitians in Medical Nutrition Therapy", "Gastroenterology Nutrition Network (GNN)", "Faculty Advisor, Aura Microbiome Program"],
+        summary: "Elena specializes in medical nutritional therapy for complex inflammatory conditions and functional gut disorders. She designs individualized microbial restoration diets, structured re-introduction protocols, and tailored elemental nutrition for IBD flares.",
+        publications: [
+          "Clinical outcomes of structured FODMAP reintroduction in post-infectious IBS, Clinical Gastroenterology and Hepatology (2023)",
+          "Nutritional markers of mucosal remission in pediatric and adult Crohn's disease, Journal of Parenteral and Enteral Nutrition (2021)"
+        ],
+        specialties: ["Low-FODMAP Re-challenge Protocols", "Microbiome & Prebiotic Architecture", "Celiac Disease & Gluten Sensitivity", "Medical Enteral Nutrition for IBD"]
+      }
+    };
+
+    // Filter functionality
+    function filterDoctors(category) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => {
+        if(btn.dataset.filter === category) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      const cards = document.querySelectorAll('.doctor-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'flex';
+          setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 50);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(15px)';
+          setTimeout(() => { card.style.display = 'none'; }, 300);
+        }
+      });
+    }
+
+    // Modal Bio viewer
+    function openBioModal(doctorId) {
+      const doctor = doctorBios[doctorId];
+      if (!doctor) return;
+
+      const modalBody = document.getElementById('modalBody');
+      modalBody.innerHTML = `
+        <div style="display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap;">
+          <img src="${doctor.image}" alt="${doctor.name}" style="width: 140px; height: 140px; border-radius: var(--radius-md); object-fit: cover; box-shadow: var(--shadow-md);">
+          <div style="flex: 1; min-width: 250px;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-terracotta); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.4rem;">${doctor.title}</span>
+            <h2 style="font-size: 2.2rem; color: var(--color-plum); font-family: var(--font-serif); margin-bottom: 0.75rem; line-height: 1.15;">${doctor.name}</h2>
+            <div style="display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.85rem; color: var(--text-secondary);">
+              ${doctor.certifications.map(c => `<div><strong style="color: var(--text-primary);">&#10003;</strong> ${c}</div>`).join('')}
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+          <h4 style="font-size: 1.1rem; color: var(--color-plum); margin-bottom: 0.75rem;">Clinical Profile &amp; Approach</h4>
+          <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.98rem;">${doctor.summary}</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+          <div>
+            <h4 style="font-size: 1.05rem; color: var(--color-plum); margin-bottom: 0.75rem;">Education &amp; Fellowships</h4>
+            <ul style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; padding-inline-start: 1.25rem;">
+              ${doctor.education.map(e => `<li>${e}</li>`).join('')}
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-size: 1.05rem; color: var(--color-plum); margin-bottom: 0.75rem;">Hospital &amp; Academic Affiliations</h4>
+            <ul style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; padding-inline-start: 1.25rem;">
+              ${doctor.affiliations.map(a => `<li>${a}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 2.5rem; background: var(--bg-secondary); padding: 1.25rem 1.5rem; border-radius: var(--radius-md);">
+          <h4 style="font-size: 1.05rem; color: var(--color-plum); margin-bottom: 0.5rem;">Selected Peer-Reviewed Research</h4>
+          <ul style="color: var(--text-secondary); font-size: 0.86rem; line-height: 1.6; padding-inline-start: 1.25rem; margin: 0;">
+            ${doctor.publications.map(p => `<li><em>"${p}"</em></li>`).join('')}
+          </ul>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); padding-top: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+          <div style="font-size: 0.88rem; color: var(--text-secondary);">Direct clinical referrals and new patients accepted.</div>
+          <a href="contact.html?doctor=${doctorId}" class="btn btn-primary" style="padding: 0.9rem 2.2rem;">Book Appointment With ${doctor.name.split(',')[0]}</a>
+        </div>
+      `;
+
+      const backdrop = document.getElementById('bioModalBackdrop');
+      backdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeBioModal() {
+      const backdrop = document.getElementById('bioModalBackdrop');
+      backdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Keyboard ESC listener for modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeBioModal();
+    });
+  </script>
 </body>
 
 </html>

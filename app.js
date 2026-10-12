@@ -97,28 +97,32 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   const rtlToggle = document.getElementById('rtl-toggle');
   
+  function updateRtlUI(isRtl) {
+    if (isRtl) {
+      document.documentElement.setAttribute('dir', 'rtl');
+      document.documentElement.setAttribute('lang', 'ar');
+    } else {
+      document.documentElement.setAttribute('dir', 'ltr');
+      document.documentElement.setAttribute('lang', 'en');
+    }
+    if (rtlToggle) {
+      rtlToggle.innerHTML = `<span class="rtl-text">${isRtl ? 'LTR' : 'RTL'}</span>`;
+      rtlToggle.setAttribute('aria-label', isRtl ? 'Switch to Left to Right' : 'Switch to Right to Left');
+      rtlToggle.setAttribute('title', isRtl ? 'Switch to Left-to-Right (LTR)' : 'Switch to Right-to-Left (RTL)');
+    }
+  }
+
   // Check for saved preference
   const savedRtl = localStorage.getItem('rtl') === 'true';
-  if (savedRtl) {
-    document.documentElement.setAttribute('dir', 'rtl');
-    document.documentElement.setAttribute('lang', 'ar');
-  } else {
-    document.documentElement.setAttribute('dir', 'ltr');
-    document.documentElement.setAttribute('lang', 'en');
-  }
+  updateRtlUI(savedRtl);
 
   if (rtlToggle) {
     rtlToggle.addEventListener('click', () => {
       const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
-      if (isRtl) {
-        document.documentElement.setAttribute('dir', 'ltr');
-        document.documentElement.setAttribute('lang', 'en');
-        localStorage.setItem('rtl', 'false');
-      } else {
-        document.documentElement.setAttribute('dir', 'rtl');
-        document.documentElement.setAttribute('lang', 'ar');
-        localStorage.setItem('rtl', 'true');
-      }
+      const newRtl = !isRtl;
+      localStorage.setItem('rtl', newRtl.toString());
+      updateRtlUI(newRtl);
     });
   }
 });
+

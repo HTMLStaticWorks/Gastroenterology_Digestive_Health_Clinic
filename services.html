@@ -11,63 +11,222 @@
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .services-hero {
+    /* Hero Section: Centered, Contained, Balanced Dimensions */
+    .services-hero-section {
+      padding-top: calc(80px + 3.5rem);
+      padding-bottom: 4rem;
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .services-hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 70vh;
-      margin-top: 80px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .services-hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .services-hero-img-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
     }
 
     .services-hero-img {
       width: 100%;
-      height: 100%;
+      height: 380px;
       object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
     }
 
-    .services-hero-content {
-      padding: 4rem;
+    .services-hero-img-wrapper:hover .services-hero-img {
+      transform: scale(1.03);
+    }
+
+    .hero-badge-overlay {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      background: rgba(42, 19, 34, 0.88);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Content Service Cards: Consistent equal padding, balanced layout & clean visual structure */
+    .services-list-section {
+      padding: 5rem 0;
+    }
+
+    .services-stack {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      background-color: var(--bg-secondary);
+      gap: 3.5rem;
     }
 
-    .service-section {
-      padding: 6rem 5%;
+    .service-card-item {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
       align-items: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .service-section:nth-child(even) {
-      background-color: var(--bg-tertiary);
+    .service-card-item:hover {
+      box-shadow: var(--shadow-md);
     }
-    .service-section:nth-child(even) > :first-child {
+
+    .service-card-item.reverse {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .service-card-item.reverse .service-content {
       order: 2;
     }
-    .service-section:nth-child(even) > :last-child {
+
+    .service-card-item.reverse .service-media {
       order: 1;
     }
 
+    .service-card-item:nth-child(even) {
+      background: var(--bg-tertiary);
+    }
+
+    .service-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-terracotta);
+      background: rgba(200, 90, 50, 0.1);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+
     .service-content h2 {
-      font-size: 2.5rem;
+      font-size: 2.25rem;
       color: var(--color-plum);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.25;
+    }
+
+    .service-content p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-bullets {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .service-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.95rem;
+    }
+
+    .service-bullets li svg {
+      flex-shrink: 0;
+      color: var(--color-terracotta);
+    }
+
+    .service-media {
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .service-media img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      transition: transform 0.3s ease;
+    }
+
+    .service-card-item:hover .service-media img {
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 1024px) {
+      .service-card-item {
+        padding: 2.5rem;
+        gap: 2.5rem;
+      }
+      .services-hero-grid {
+        gap: 2.5rem;
+      }
     }
 
     @media (max-width: 768px) {
-
-      .services-hero,
-      .service-section {
+      .services-hero-grid,
+      .service-card-item,
+      .service-card-item.reverse {
         grid-template-columns: 1fr;
+        gap: 2rem;
       }
 
-      .service-section:nth-child(even) > :first-child {
-        order: unset;
+      .service-card-item {
+        padding: 2rem 1.5rem;
       }
-      .service-section:nth-child(even) > :last-child {
-        order: unset;
+
+      .service-card-item.reverse .service-content {
+        order: 1;
+      }
+      .service-card-item.reverse .service-media {
+        order: 2;
+      }
+
+      .services-hero-img-wrapper {
+        max-width: 100%;
+      }
+
+      .services-hero-img {
+        height: 280px;
+      }
+
+      .service-media img {
+        height: 250px;
+      }
+
+      .service-content h2 {
+        font-size: 1.85rem;
       }
     }
   </style>
@@ -76,13 +235,30 @@
 <body>
 
   <nav class="navbar">
+    <div class="clinic-topbar">
+      <div class="container clinic-topbar-inner">
+        <div class="clinic-topbar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Urgent Clinical Line: <strong>(555) 782-4278</strong></span>
+        </div>
+        <div class="clinic-topbar-badges">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> ASGE &amp; AAAASF Accredited Center</span>
+          <span class="desktop-only"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Board-Certified Specialists</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Rapid Referrals Accepted</span>
+        </div>
+      </div>
+    </div>
     <div class="container navbar-inner">
       <a href="index.html" class="nav-brand">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem; flex-shrink: 0;">
           <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2" />
           <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8" />
         </svg>
-      AURA</a>
+        <div style="display: flex; flex-direction: column; line-height: 1.15;">
+          <span>AURA</span>
+          <span class="nav-brand-sub">Digestive &amp; Liver Clinic</span>
+        </div>
+      </a>
       <div class="nav-links">
         <a href="index.html" class="nav-link">Home</a>
         <a href="home2.html" class="nav-link">Home 2</a>
@@ -92,120 +268,187 @@
         <a href="dashboard.html" class="nav-link">Dashboard</a>
       </div>
       <div class="nav-actions">
-        <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle language direction" style="margin-inline-end: 0.5rem;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 3 4 7l4 4"/>
-            <path d="M4 7h16"/>
-            <path d="m16 21 4-4-4-4"/>
-            <path d="M20 17H4"/>
-          </svg>
+        <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle language direction" title="Switch language direction">
+          <span class="rtl-text">RTL</span>
         </button>
-
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"></button>
-      <button id="mobile-menu-toggle" class="hamburger" aria-label="Toggle navigation">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hamburger-icon-open"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
-        <a href="login.html" class="btn btn-secondary">Patient Login</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
+        <button id="mobile-menu-toggle" class="hamburger" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hamburger-icon-open"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary">Patient Login</a>
       </div>
     </div>
   </nav>
 
   <main>
-    <section class="services-hero">
-      <img src="assets/services_hero.jpg" alt="Advanced Endoscopy Equipment"
-        class="services-hero-img">
-      <div class="services-hero-content">
-        <h1 class="hero-title" style="font-size: 3rem;">Advanced Care for the Complete Digestive System</h1>
-        <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem;">Utilizing the latest in
-          diagnostic technology, our specialists provide comprehensive care tailored to your unique health profile.</p>
-        <div>
-          <a href="contact.html" class="btn btn-primary">Request Consultation</a>
+    <!-- HERO SECTION (BALANCED, CONTAINED & SYMMETRIC) -->
+    <section class="services-hero-section">
+      <div class="container">
+        <div class="services-hero-grid">
+          <div class="services-hero-content">
+            <span class="hero-eyebrow">Comprehensive Gastroenterology</span>
+            <h1 class="hero-title" style="font-size: 2.85rem; margin-bottom: 1.25rem;">Advanced Care for the Complete Digestive System</h1>
+            <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.7;">
+              Utilizing the latest in diagnostic technology, our board-certified specialists provide comprehensive, personalized care tailored to your unique digestive health profile.
+            </p>
+            <div class="services-hero-cta" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="contact.html" class="btn btn-primary">Request Consultation</a>
+              <a href="tel:5557824278" class="btn btn-secondary">Urgent Line: (555) 782-4278</a>
+            </div>
+          </div>
+          <div class="services-hero-img-wrapper">
+            <img src="assets/services_hero.jpg" alt="Advanced Endoscopy Equipment" class="services-hero-img">
+            <div class="hero-badge-overlay">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+              <span>Olympus EVIS X1 4K Visualization Suite</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="service-section">
-      <div class="service-content">
-        <h2>Endoscopy</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 1rem;">An upper endoscopy allows our specialists to
-          directly visualize the lining of your esophagus, stomach, and duodenum. We use state-of-the-art equipment to
-          diagnose conditions like acid reflux, ulcers, and celiac disease with precision.</p>
-        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-inline-start: 1.5rem;">
-          <li>Minimally invasive diagnostic procedure</li>
-          <li>Comfortable, sedation-assisted experience</li>
-          <li>Immediate insights into upper GI health</li>
-        </ul>
-      </div>
-      <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80"
-        alt="Digestive Health Service"
-        style="width: 100%; height: 400px; border-radius: var(--radius-lg); object-fit: cover; box-shadow: var(--shadow-sm);">
-    </section>
+    <!-- CONTENT SERVICE CARDS (EQUAL PADDING & BALANCED LAYOUT ACROSS ALL SECTIONS) -->
+    <section class="services-list-section">
+      <div class="container">
+        <div class="services-stack">
+          
+          <!-- Card 1: Endoscopy -->
+          <article class="service-card-item">
+            <div class="service-content">
+              <span class="service-tag">Upper GI Diagnostic</span>
+              <h2>Endoscopy (EGD)</h2>
+              <p>An upper endoscopy allows our specialists to directly visualize the lining of your esophagus, stomach, and duodenum. We use state-of-the-art optics to diagnose acid reflux, ulcers, Barrett's esophagus, and celiac disease with exceptional precision.</p>
+              <ul class="service-bullets">
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Minimally invasive diagnostic procedure
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Comfortable, sedation-assisted experience
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Immediate insights and targeted biopsy sampling
+                </li>
+              </ul>
+              <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                <a href="contact.html?service=egd" class="btn btn-primary" style="padding: 0.6rem 1.4rem; font-size: 0.88rem;">Schedule EGD</a>
+                <a href="contact.html" class="service-link">Preparation Guide &rarr;</a>
+              </div>
+            </div>
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" alt="Upper Endoscopy Service">
+            </div>
+          </article>
 
-    <section class="service-section">
-      <div class="service-content">
-        <h2>Colonoscopy</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Considered the gold standard for colon cancer
-          screening, a colonoscopy is a vital preventative procedure. Our clinic ensures a dignified, calm experience
-          while meticulously screening for polyps and other abnormalities.</p>
-        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-inline-start: 1.5rem;">
-          <li>Critical for early cancer detection</li>
-          <li>Advanced polyp removal capabilities</li>
-          <li>Expert post-procedure care and guidance</li>
-        </ul>
-      </div>
-      <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=800&q=80"
-        alt="Digestive Health Service"
-        style="width: 100%; height: 400px; border-radius: var(--radius-lg); object-fit: cover; box-shadow: var(--shadow-sm);">
-    </section>
+          <!-- Card 2: Colonoscopy (Reversed) -->
+          <article class="service-card-item reverse">
+            <div class="service-content">
+              <span class="service-tag">Colorectal Prevention</span>
+              <h2>Colonoscopy &amp; AI Polypectomy</h2>
+              <p>Considered the gold standard for colorectal cancer screening and prevention. Our accredited endoscopy suites ensure a calm, private, and dignified experience while meticulously screening for polyps and tissue abnormalities using AI assistance.</p>
+              <ul class="service-bullets">
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Critical early cancer detection &amp; polyp removal
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Gentle CO2 insufflation minimizing post-procedure bloating
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Board-certified post-procedure care and pathology review
+                </li>
+              </ul>
+              <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                <a href="contact.html?service=colonoscopy" class="btn btn-primary" style="padding: 0.6rem 1.4rem; font-size: 0.88rem;">Book Screening</a>
+                <a href="contact.html" class="service-link">Screening Checklist &rarr;</a>
+              </div>
+            </div>
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=800&q=80" alt="Colonoscopy Service">
+            </div>
+          </article>
 
-    <!-- IBS Management -->
-    <section class="service-section">
-      <div class="service-content">
-        <h2>IBS Management</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Irritable Bowel Syndrome requires a highly
-          personalized, empathetic approach. Our specialists employ advanced motility testing, dietary mapping, and
-          evidence-based therapeutics to craft long-term management plans that restore your quality of life.</p>
-        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-inline-start: 1.5rem;">
-          <li>Comprehensive dietary and motility analysis</li>
-          <li>Microbiome assessment and management</li>
-          <li>Ongoing support via our patient portal</li>
-        </ul>
-        <a href="contact.html" class="service-link">Discuss Your Symptoms &rarr;</a>
-      </div>
-      <img src="https://images.pexels.com/photos/8471918/pexels-photo-8471918.jpeg" alt="Digestive Health Service"
-        style="width: 100%; height: 400px; border-radius: var(--radius-lg); object-fit: cover; box-shadow: var(--shadow-sm);">
-    </section>
+          <!-- Card 3: IBS Management -->
+          <article class="service-card-item">
+            <div class="service-content">
+              <span class="service-tag">Functional GI Care</span>
+              <h2>IBS &amp; Motility Management</h2>
+              <p>Irritable Bowel Syndrome requires a highly personalized, empathetic approach. Our specialists employ advanced motility testing, breath analysis, and evidence-based therapeutic regimens to craft sustainable plans that restore gastrointestinal balance.</p>
+              <ul class="service-bullets">
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Comprehensive dietary mapping &amp; Low-FODMAP guidance
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Microbiome evaluation and non-invasive breath testing
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Ongoing symptom tracking via our patient portal
+                </li>
+              </ul>
+              <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                <a href="contact.html?service=ibs" class="btn btn-primary" style="padding: 0.6rem 1.4rem; font-size: 0.88rem;">Manage IBS</a>
+                <a href="contact.html" class="service-link">Discuss Your Symptoms &rarr;</a>
+              </div>
+            </div>
+            <div class="service-media">
+              <img src="https://images.pexels.com/photos/8471918/pexels-photo-8471918.jpeg" alt="IBS Management Service">
+            </div>
+          </article>
 
-    <!-- Consultation -->
-    <section class="service-section">
-      <div class="service-content">
-        <h2>Digestive Health Consultation</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 1rem;">The foundation of effective gastroenterology is
-          the consultation. Taking place in our serene clinical suites, our specialists take the time to listen, review
-          complex histories, and architect bespoke diagnostic and treatment pathways.</p>
-        <ul style="color: var(--text-secondary); margin-bottom: 2rem; list-style-type: disc; padding-inline-start: 1.5rem;">
-          <li>Unhurried, 60-minute initial evaluations</li>
-          <li>Holistic review of gastrointestinal health</li>
-          <li>Collaborative care planning</li>
-        </ul>
-        <a href="contact.html" class="btn btn-primary" style="margin-top: 1rem;">Book a Consultation</a>
-      </div>
-      <img src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg"
-        alt="Digestive Health Consultation"
-        style="width: 100%; height: 400px; border-radius: var(--radius-lg); object-fit: cover; box-shadow: var(--shadow-sm);">
-    </section>
+          <!-- Card 4: Consultation (Reversed) -->
+          <article class="service-card-item reverse">
+            <div class="service-content">
+              <span class="service-tag">Clinical Evaluation</span>
+              <h2>Digestive Health Consultation</h2>
+              <p>The foundation of effective gastroenterology is an unhurried, detailed consultation. Taking place in our serene clinical suites, our physicians take the time to listen, review complex records, and architect bespoke diagnostic and treatment pathways.</p>
+              <ul class="service-bullets">
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Comprehensive 45-60 minute physician evaluations
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Holistic diagnostic reviews and second opinions
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  Collaborative, patient-first care roadmap
+                </li>
+              </ul>
+              <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.6rem 1.4rem; font-size: 0.88rem;">Book Consultation</a>
+                <a href="doctors.html" class="service-link">Meet Our Physicians &rarr;</a>
+              </div>
+            </div>
+            <div class="service-media">
+              <img src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg" alt="Digestive Health Consultation">
+            </div>
+          </article>
 
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
     <div class="container footer-grid">
       <div>
         <div class="nav-brand" style="color: var(--color-sand); margin-bottom: 1rem;">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem; flex-shrink: 0;">
             <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2" />
             <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8" />
           </svg>
-          Aura
+          <div style="display: flex; flex-direction: column; line-height: 1.15;">
+            <span>AURA</span>
+            <span class="nav-brand-sub" style="color: rgba(255,255,255,0.7);">Digestive &amp; Liver Clinic</span>
+          </div>
         </div>
         <p style="color: rgba(255,255,255,0.7); max-width: 300px; margin-bottom: 2rem;">A sophisticated private
           gastroenterology practice combining advanced digestive medicine with a premium patient experience.</p>

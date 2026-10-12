@@ -339,9 +339,288 @@
       }
     }
 
+    /* Global Patient Welcome Banner & At-A-Glance Information */
+    .global-patient-welcome {
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(200, 90, 50, 0.05) 100%);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.8rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      position: relative;
+    }
+
+    .welcome-main-info {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .welcome-avatar-wrapper {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .welcome-avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-plum) 0%, #3a162d 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 3px 10px rgba(74, 28, 57, 0.25);
+    }
+
+    .welcome-status-dot {
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+      width: 14px;
+      height: 14px;
+      background: #1e8e3e;
+      border: 2.5px solid var(--bg-secondary);
+      border-radius: 50%;
+    }
+
+    .welcome-text-group {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .welcome-greeting-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.25rem;
+    }
+
+    .welcome-time-pill {
+      background: rgba(200, 90, 50, 0.12);
+      color: var(--color-terracotta);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+    }
+
+    .welcome-name {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      color: var(--text-primary);
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .patient-id-badge {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      font-family: monospace;
+      font-weight: 600;
+    }
+
+    .welcome-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .welcome-subtitle strong {
+      color: var(--text-primary);
+    }
+
+    .welcome-glance-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1.35rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .glance-metric-item {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .glance-metric-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .glance-metric-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+    }
+
+    .glance-metric-val {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .glance-metric-val.status-ok {
+      color: #1e8e3e;
+    }
+
+    .glance-metric-sub {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    /* Page-Specific At-A-Glance Information Banners (For All Pages) */
+    .tab-glance-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      border-inline-start: 4px solid var(--color-terracotta);
+      border-radius: var(--radius-sm);
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 1.75rem;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-glance-content {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .tab-glance-content h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tab-glance-content p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    .tab-glance-pills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .glance-pill {
+      font-size: 0.78rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      color: var(--text-primary);
+      font-weight: 500;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .glance-pill-success {
+      background: rgba(30, 142, 62, 0.1);
+      border-color: rgba(30, 142, 62, 0.3);
+      color: #1e8e3e;
+    }
+
+    .glance-pill-highlight {
+      background: rgba(200, 90, 50, 0.1);
+      border-color: rgba(200, 90, 50, 0.3);
+      color: var(--color-terracotta);
+    }
+
+    /* Quick Shortcuts Bar */
+    .quick-actions-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.75rem;
+      flex-wrap: wrap;
+    }
+
+    .quick-actions-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-inline-end: 0.25rem;
+    }
+
+    .quick-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      padding: 0.45rem 0.95rem;
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .quick-action-btn:hover {
+      background: var(--color-plum);
+      color: #fff;
+      border-color: var(--color-plum);
+      transform: translateY(-1px);
+    }
+
+    .quick-action-btn svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+    }
+
+    @media (max-width: 1024px) {
+      .welcome-glance-metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 768px) {
       .dashboard-grid { grid-template-columns: 1fr; }
       .appointment-item { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+      .welcome-glance-metrics { grid-template-columns: 1fr; }
+      .welcome-greeting-row { flex-direction: column; align-items: flex-start; }
+      .tab-glance-strip { flex-direction: column; align-items: flex-start; }
       
       .data-table {
         display: block;
@@ -366,11 +645,14 @@
     <aside class="sidebar">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-inline-end: 1rem;">
         <a href="index.html" class="sidebar-brand desktop-logo" style="margin-bottom: 0;">
-          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem;">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem; flex-shrink: 0;">
             <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2"/>
             <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8"/>
           </svg>
-          Aura
+          <div style="display: flex; flex-direction: column; line-height: 1.15;">
+            <span>AURA</span>
+            <span class="nav-brand-sub" style="font-size: 0.6rem;">Digestive Clinic</span>
+          </div>
         </a>
         <h2 class="mobile-portal-title">Patient Portal</h2>
         <button id="sidebar-close" aria-label="Close menu">&times;</button>
@@ -394,25 +676,20 @@
           <button id="dashboard-menu-toggle" aria-label="Toggle navigation">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
           </button>
-          <h2 class="header-title desktop-portal-title">Patient Portal</h2>
+          <h2 class="header-title desktop-portal-title">Clinical Patient Portal</h2>
           <a href="index.html" class="mobile-logo">
-            <svg width="24" height="24" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem;">
+            <svg width="24" height="24" viewBox="0 0 32 32" fill="none" style="margin-inline-end: 0.6rem; flex-shrink: 0;">
               <circle cx="12" cy="16" r="8" stroke="currentColor" stroke-width="2"/>
               <circle cx="20" cy="16" r="8" stroke="var(--color-terracotta)" stroke-width="2" opacity="0.8"/>
             </svg>
-            Aura
+            Aura Digestive Clinic
           </a>
         </div>
         <div class="header-right">
-          <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle language direction" style="margin-inline-end: 0.5rem;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M8 3 4 7l4 4"/>
-              <path d="M4 7h16"/>
-              <path d="m16 21 4-4-4-4"/>
-              <path d="M20 17H4"/>
-            </svg>
+          <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle language direction" title="Switch language direction">
+            <span class="rtl-text">RTL</span>
           </button>
-          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"></button>
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
 
           <div class="user-profile">
             <div class="avatar">JD</div>
@@ -423,9 +700,91 @@
       
       <div class="content-area">
       
+        <!-- GLOBAL WELCOME MESSAGE & AT-A-GLANCE PATIENT INFORMATION (FOR ALL PAGES) -->
+        <section class="global-patient-welcome" aria-label="Patient Welcome and Summary">
+          <div class="welcome-main-info">
+            <div class="welcome-avatar-wrapper">
+              <div class="welcome-avatar">JD</div>
+              <span class="welcome-status-dot" title="Active Clinical Account"></span>
+            </div>
+            <div class="welcome-text-group">
+              <div class="welcome-greeting-row">
+                <span class="welcome-time-pill" id="current-greeting-time">Good day</span>
+                <h1 class="welcome-name">Welcome back, Jane Doe</h1>
+                <span class="patient-id-badge">MRN: #AUR-88294</span>
+              </div>
+              <p class="welcome-subtitle">
+                Aura Digestive Care Portal &bull; Attending Specialist: <strong>Dr. Sarah Jenkins, MD, FACG</strong> &bull; Care Status: <strong style="color: #1e8e3e;">Active Therapy</strong>
+              </p>
+            </div>
+          </div>
+          
+          <div class="welcome-glance-metrics">
+            <div class="glance-metric-item">
+              <span class="glance-metric-label">Next Scheduled Visit</span>
+              <span class="glance-metric-val">Oct 14, 2026</span>
+              <span class="glance-metric-sub">In 2 days &bull; 10:30 AM (In-Person)</span>
+            </div>
+            <div class="glance-metric-item">
+              <span class="glance-metric-label">Diagnostic Status</span>
+              <span class="glance-metric-val status-ok">Panel Normal</span>
+              <span class="glance-metric-sub">1 Celiac test in pathology review</span>
+            </div>
+            <div class="glance-metric-item">
+              <span class="glance-metric-label">Active Care Protocol</span>
+              <span class="glance-metric-val">Low-FODMAP Ph. 2</span>
+              <span class="glance-metric-sub">Target: IBS & Acid Reflux relief</span>
+            </div>
+            <div class="glance-metric-item">
+              <span class="glance-metric-label">Account Balance</span>
+              <span class="glance-metric-val status-ok">$0.00 Due</span>
+              <span class="glance-metric-sub">BlueCross PPO active</span>
+            </div>
+          </div>
+        </section>
+      
         <!-- OVERVIEW TAB -->
         <div id="tab-overview" class="tab-pane active">
-          <h1 class="page-title">Your Digestive Care</h1>
+          <div class="tab-glance-strip">
+            <div class="tab-glance-content">
+              <h4>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                Overview at a Glance
+              </h4>
+              <p>Your current digestive health management plan is stable. Follow your scheduled fasting routine prior to your Oct 14 Endoscopy Consultation with Dr. Sarah Jenkins.</p>
+            </div>
+            <div class="tab-glance-pills">
+              <span class="glance-pill glance-pill-highlight">Next: Oct 14 @ 10:30 AM</span>
+              <span class="glance-pill glance-pill-success">Vitals & Labs Synchronized</span>
+              <span class="glance-pill">Dr. Sarah Jenkins</span>
+            </div>
+          </div>
+
+          <div class="quick-actions-bar">
+            <span class="quick-actions-label">Quick Actions:</span>
+            <a onclick="switchTab('appointments')" class="quick-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Manage Visits
+            </a>
+            <a onclick="switchTab('symptom-log')" class="quick-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+              Log Today's Symptoms
+            </a>
+            <a onclick="switchTab('test-results')" class="quick-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              View Test Reports
+            </a>
+            <a onclick="switchTab('procedures')" class="quick-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              Pre-Procedure Prep
+            </a>
+            <a href="tel:5550192834" class="quick-action-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              Nurse Triage Line
+            </a>
+          </div>
+          
+          <h2 class="page-title" style="font-size: 1.35rem; margin-bottom: 1.25rem;">Key Health Metrics</h2>
           
           <div class="dashboard-grid">
             <div class="widget-card">
@@ -472,6 +831,21 @@
 
         <!-- APPOINTMENTS TAB -->
         <div id="tab-appointments" class="tab-pane">
+          <div class="tab-glance-strip">
+            <div class="tab-glance-content">
+              <h4>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                Appointments at a Glance
+              </h4>
+              <p>You have 1 upcoming in-person consult in 2 days and 1 upcoming video telehealth visit scheduled. 2 past appointment consultation summaries are available for download.</p>
+            </div>
+            <div class="tab-glance-pills">
+              <span class="glance-pill glance-pill-highlight">Next: Oct 14 @ 10:30 AM (In-Person)</span>
+              <span class="glance-pill">Telehealth: Nov 02 @ 2:00 PM</span>
+              <span class="glance-pill glance-pill-success">2 Archived Visits</span>
+            </div>
+          </div>
+
           <h1 class="page-title">Appointments</h1>
           
           <div class="panel">
@@ -543,6 +917,21 @@
 
         <!-- PROCEDURES TAB -->
         <div id="tab-procedures" class="tab-pane">
+          <div class="tab-glance-strip">
+            <div class="tab-glance-content">
+              <h4>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                Procedures & Diagnostics at a Glance
+              </h4>
+              <p>2 endoscopic procedures recorded with certified post-op reports and biopsy histopathology. For any upcoming exams, review mandatory pre-procedure fasting and preparation protocols.</p>
+            </div>
+            <div class="tab-glance-pills">
+              <span class="glance-pill glance-pill-success">Upper Endoscopy (EGD): Completed</span>
+              <span class="glance-pill glance-pill-success">Colonoscopy: Completed</span>
+              <span class="glance-pill glance-pill-highlight">Prep Guide Available</span>
+            </div>
+          </div>
+
           <h1 class="page-title">Procedures</h1>
           
           <div class="panel">
@@ -589,6 +978,21 @@
 
         <!-- TEST RESULTS TAB -->
         <div id="tab-test-results" class="tab-pane">
+          <div class="tab-glance-strip">
+            <div class="tab-glance-content">
+              <h4>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                Laboratory & Diagnostic Results at a Glance
+              </h4>
+              <p>Your Comprehensive Metabolic Panel is within healthy reference ranges. The Celiac Disease antibody screening from Sep 12 is currently in clinical processing (estimated turnaround: 24-48 hours).</p>
+            </div>
+            <div class="tab-glance-pills">
+              <span class="glance-pill glance-pill-success">Metabolic Panel: Normal</span>
+              <span class="glance-pill glance-pill-highlight">Celiac Panel: In Review</span>
+              <span class="glance-pill">Fecal Calprotectin: Reviewed</span>
+            </div>
+          </div>
+
           <h1 class="page-title">Test Results</h1>
           
           <div class="panel">
@@ -627,6 +1031,21 @@
 
         <!-- SYMPTOM LOG TAB -->
         <div id="tab-symptom-log" class="tab-pane">
+          <div class="tab-glance-strip">
+            <div class="tab-glance-content">
+              <h4>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                Symptom Tracking at a Glance
+              </h4>
+              <p>Your reported pain level has decreased from 8/10 to 3/10 over the past week. Continuing daily entries assists your clinical team in evaluating medication dosages and dietary tolerance.</p>
+            </div>
+            <div class="tab-glance-pills">
+              <span class="glance-pill glance-pill-success">Pain Trend: 3/10 (Stabilized)</span>
+              <span class="glance-pill">3 Entries This Month</span>
+              <span class="glance-pill">Main Trigger: Bloating / Reflux</span>
+            </div>
+          </div>
+
           <h1 class="page-title">Symptom Log</h1>
           <p style="color: var(--text-secondary); margin-bottom: 2rem;">Logging your symptoms helps our team tailor your treatment plan accurately.</p>
           
@@ -697,6 +1116,21 @@
 
         <!-- BILLING TAB -->
         <div id="tab-billing" class="tab-pane">
+          <div class="tab-glance-strip">
+            <div class="tab-glance-content">
+              <h4>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                Billing & Coverage at a Glance
+              </h4>
+              <p>Your patient balance is $0.00. BlueCross BlueShield PPO insurance is active and verified for upcoming endoscopic procedures and telehealth visits through December 31, 2026.</p>
+            </div>
+            <div class="tab-glance-pills">
+              <span class="glance-pill glance-pill-success">Current Balance: $0.00 (All Paid)</span>
+              <span class="glance-pill">Insurance: BlueCross PPO Verified</span>
+              <span class="glance-pill">0 Overdue Statements</span>
+            </div>
+          </div>
+
           <h1 class="page-title">Billing & Insurance</h1>
           
           <div class="dashboard-grid">
@@ -745,6 +1179,22 @@
 
         <!-- PROFILE TAB -->
         <div id="tab-profile" class="tab-pane">
+          <div class="tab-glance-strip">
+            <div class="tab-glance-content">
+              <h4>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-terracotta)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                Patient Profile & Medical Record at a Glance
+              </h4>
+              <p>Verified personal and clinical contact file. To amend official identification or emergency contact credentials, consult clinic front-desk staff.</p>
+            </div>
+            <div class="tab-glance-pills">
+              <span class="glance-pill">Jane Doe</span>
+              <span class="glance-pill glance-pill-success">MRN: #AUR-88294 Verified</span>
+              <span class="glance-pill">DOB: 05/14/1985</span>
+              <span class="glance-pill">Primary: Dr. Sarah Jenkins</span>
+            </div>
+          </div>
+
           <h1 class="page-title">Patient Profile</h1>
           
           <div class="panel">
@@ -819,6 +1269,12 @@
         document.querySelector('.sidebar').classList.remove('open');
       });
     }
+    
+    // Set time-based welcome greeting
+    const hour = new Date().getHours();
+    const greetingText = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+    const greetingEl = document.getElementById('current-greeting-time');
+    if (greetingEl) greetingEl.textContent = greetingText;
   </script>
 </body>
 </html>
