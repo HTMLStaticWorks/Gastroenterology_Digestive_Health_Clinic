@@ -1240,3 +1240,106 @@ img {
     padding: 0.95rem 1.5rem !important;
   }
 }
+
+/* Tablet View: center orphan cards in 3-column grids (last row with 1 or 2 cards) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .process-steps-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .process-steps-grid > .process-step-card {
+    flex: 0 0 calc((100% - 3rem) / 3);
+    max-width: calc((100% - 3rem) / 3);
+  }
+}
+
+/* All devices: card images flush to top/left/right edges; spacing only below the image */
+.facility-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.facility-img-box {
+  border: 0;
+  border-radius: 0;
+}
+
+.facility-card h3,
+.facility-card p {
+  padding-inline: 1.5rem;
+}
+
+.facility-card p {
+  padding-bottom: 1.5rem;
+}
+
+.card-grid[style] > .service-card {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+/* Image service cards: flush image, aligned heading zone so subtext starts at the same line */
+.card-grid:not([style]) > .service-card:has(> img) {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-grid:not([style]) > .service-card:has(> img) > img {
+  width: 100% !important;
+  border-radius: 0 !important;
+  margin: 0 0 1.5rem !important;
+  flex-shrink: 0;
+}
+
+.card-grid:not([style]) > .service-card:has(> img) > :not(img) {
+  margin-inline: 2.5rem;
+}
+
+.card-grid:not([style]) > .service-card:has(> img) > div:last-child {
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 651px) {
+  .card-grid:not([style]) > .service-card:has(> img) > h3 {
+    min-height: 3.6rem;
+  }
+}
+
+.card-grid[style] > .service-card > img {
+  width: 100% !important;
+  height: 260px !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 0 0 1.5rem !important;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.card-grid[style] > .service-card > :not(img) {
+  margin-inline: 2rem;
+}
+
+.card-grid[style] > .service-card > div:last-child {
+  margin-bottom: 2rem;
+}
+
+
+@media (min-width: 938px) and (max-width: 1024px) {
+  .facilities-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .facilities-grid > .facility-card {
+    flex: 0 0 calc((100% - 4rem) / 3);
+    max-width: calc((100% - 4rem) / 3);
+  }
+}
+

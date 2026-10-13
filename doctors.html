@@ -145,6 +145,22 @@
       color: #1a0f16;
     }
 
+    @media (max-width: 992px) {
+      .filter-pills {
+        display: flex;
+        width: 100%;
+        max-width: 640px;
+        margin-inline: auto;
+        border-radius: var(--radius-lg);
+        gap: 0.5rem;
+      }
+      .filter-btn {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 0.65rem 1rem;
+      }
+    }
+
     /* Doctors Showcase Grid */
     .doctors-grid {
       display: grid;
@@ -563,6 +579,12 @@
       }
       .doctor-card-actions {
         grid-template-columns: 1fr;
+      }
+      .doctor-meta-row {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 0.35rem;
       }
       .faculty-stats-grid {
         grid-template-columns: 1fr;
